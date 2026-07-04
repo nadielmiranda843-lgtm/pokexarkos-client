@@ -14,3 +14,9 @@ Executaveis baixados pelo launcher:
 https://raw.githubusercontent.com/nadielmiranda843-lgtm/pokexarkos-client/main/pokexarkos_gl.exe
 https://raw.githubusercontent.com/nadielmiranda843-lgtm/pokexarkos-client/main/pokexarkos_dx.exe
 ```
+
+Pacote completo usado pelo launcher novo:
+
+```text
+https://github.com/nadielmiranda843-lgtm/pokexarkos-client/archive/refs/heads/main.zip
+```
