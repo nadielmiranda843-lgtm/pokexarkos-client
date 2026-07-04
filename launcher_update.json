@@ -1,5 +1,5 @@
 {
-  "version": "7.0.1",
+  "version": "7.0.2",
   "raw_base_url": "https://raw.githubusercontent.com/nadielmiranda843-lgtm/pokexarkos-client/main/",
   "media_base_url": "https://media.githubusercontent.com/media/nadielmiranda843-lgtm/pokexarkos-client/main/",
   "files_manifest_url": "https://raw.githubusercontent.com/nadielmiranda843-lgtm/pokexarkos-client/main/files_manifest.txt",
@@ -7,10 +7,16 @@
   "client_version_file": "client_version.txt",
   "repository": "https://github.com/nadielmiranda843-lgtm/pokexarkos-client",
   "manifest_url": "https://raw.githubusercontent.com/nadielmiranda843-lgtm/pokexarkos-client/main/version.json",
-  "gl_url": "https://raw.githubusercontent.com/nadielmiranda843-lgtm/pokexarkos-client/main/pokexarkos_gl.exe",
-  "dx_url": "https://raw.githubusercontent.com/nadielmiranda843-lgtm/pokexarkos-client/main/pokexarkos_dx.exe",
-  "GlUrl": "https://raw.githubusercontent.com/nadielmiranda843-lgtm/pokexarkos-client/main/pokexarkos_gl.exe",
-  "DxUrl": "https://raw.githubusercontent.com/nadielmiranda843-lgtm/pokexarkos-client/main/pokexarkos_dx.exe",
-  "news": "Bem-vindo ao PokeXarkos!\n\nServidor online e funcionando.\nAproveite sua aventura!\n\n- Equipe PokeXarkos",
-  "changelog": "Versao 7.0.1 - Cliente preparado para autoupdate via GitHub"
+  "gl_url": "https://media.githubusercontent.com/media/nadielmiranda843-lgtm/pokexarkos-client/main/pokexarkos_gl.exe",
+  "dx_url": "https://media.githubusercontent.com/media/nadielmiranda843-lgtm/pokexarkos-client/main/pokexarkos_dx.exe",
+  "GlUrl": "https://media.githubusercontent.com/media/nadielmiranda843-lgtm/pokexarkos-client/main/pokexarkos_gl.exe",
+  "DxUrl": "https://media.githubusercontent.com/media/nadielmiranda843-lgtm/pokexarkos-client/main/pokexarkos_dx.exe",
+  "news_image_url": "https://media.githubusercontent.com/media/nadielmiranda843-lgtm/pokexarkos-client/main/launcher_news/beta-chegou.png",
+  "news_images": [
+    "https://media.githubusercontent.com/media/nadielmiranda843-lgtm/pokexarkos-client/main/launcher_news/eventos-donate.png",
+    "https://media.githubusercontent.com/media/nadielmiranda843-lgtm/pokexarkos-client/main/launcher_news/beta-chegou.png",
+    "https://media.githubusercontent.com/media/nadielmiranda843-lgtm/pokexarkos-client/main/launcher_news/reportagem.png"
+  ],
+  "news": "O beta chegou!\n\n- Eventos semanais ativos\n- Eventos surpresa podem acontecer a qualquer momento\n- Donate em dobro no beta\n- Recompensas exclusivas e comunidade ativa\n\nEncontrou algo errado? Faca uma reportagem e ajude a deixar o servidor ainda melhor.",
+  "changelog": "Versao 7.0.2 - URLs de download corrigidas para arquivos grandes no GitHub e noticias do beta atualizadas"
 }
