@@ -1,0 +1,9 @@
+Module
+  name: game_securitycode
+  description: Security code character
+  author: Vitor Edu
+  website: none
+  sandboxed: true
+  scripts: [ codecreate ]
+  @onLoad: init()
+  @onUnload: terminate()

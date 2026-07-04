@@ -1,0 +1,140 @@
+CombatBox < UICheckBox
+  size: 20 20
+  image-clip: 0 0 20 20
+
+  $checked:
+    image-clip: 0 20 20 20
+
+FightOffensiveBox < CombatBox
+  image-source: /images/ui/pxg/fightoffensive
+FightBalancedBox < CombatBox
+  image-source: /images/ui/pxg/fightbalanced
+FightDefensiveBox < CombatBox
+  image-source: /images/ui/pxg/fightdefensive
+
+InventoryItem < Item
+
+LegSlot < InventoryItem
+  id: slot7
+  image-source: /images/ui/pxg/normalSlot
+  &position: {x=65535, y=7, z=0}
+
+BackSlot < InventoryItem
+  id: slot3
+  image-source: /images/ui/pxg/normalSlot
+  &position: {x=65535, y=3, z=0}
+
+NeckSlot < InventoryItem
+  id: slot2
+  image-source: /images/ui/pxg/normalSlot
+  &position: {x=65535, y=2, z=0}
+
+FeetSlot < InventoryItem
+  id: slot8
+  image-source: /images/ui/pxg/pokeSlot
+  &position: {x=65535, y=8, z=0}
+
+FingerSlot < InventoryItem
+  id: slot9
+  image-source: /images/ui/pxg/normalSlot
+  &position: {x=65535, y=9, z=0}
+
+AmmoSlot < InventoryItem
+  id: slot10
+  image-source: /images/ui/pxg/normalSlot
+  &position: {x=65535, y=10, z=0}
+
+BodySlot < InventoryItem
+  id: slot11
+  image-source: /images/ui/pxg/normalSlot
+  &position: {x=65535, y=11, z=0}
+
+pbInventory < UIWidget
+  image-source: /images/ui/pxg/pb_acessa
+  phantom: true
+  focusable: false
+
+OrderIcon < Item
+  size: 35 35
+  image-source: /images/ui/pxg/Order
+  anchors.bottom: parent.bottom
+  anchors.right: parent.right
+  phantom: true
+  focusable: false
+  tooltip: Ordem (Ctrl+1)
+
+MiniWindow
+  id: barWindow
+  !text: tr('Inventory')
+  height: 125
+  @onClose: onMiniWindowClose()
+  &save: true
+
+  MiniWindowContents
+    Panel
+      id: panelPbs
+      anchors.top: parent.top
+      anchors.horizontalCenter: parent.horizontalCenter
+      size: 100 14
+      margin-top: 2
+      layout:
+        type: horizontalBox
+        spacing: 2
+
+    LegSlot
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-left: 15
+      margin-top: 20
+
+    BackSlot
+      anchors.top: prev.top
+      anchors.left: prev.right
+      margin-left: 5
+    NeckSlot
+      anchors.top: prev.top
+      anchors.left: prev.right
+      margin-left: 5
+
+    UIButton
+      id: pokedex
+      size: 32 32
+      image-source: /images/ui/inventory/dex2
+      anchors.verticalCenter: parent.verticalCenter
+      anchors.left: prev.right
+      margin-left: 5
+      margin-top: 0
+      cursor: pointer
+      tooltip: Pokedex (Ctrl+Tab)
+      @onClick: modules.game_interface.startPokedexSelect()
+
+    FeetSlot
+      anchors.top: slot7.bottom
+      anchors.left: slot7.left
+      margin-top: 5
+
+    FingerSlot
+      anchors.top: prev.top
+      anchors.left: prev.right
+      margin-left: 5
+
+    BodySlot
+      anchors.top: prev.top
+      anchors.left: prev.right
+      margin-left: 5
+
+    FightOffensiveBox
+      id: fightOffensiveBox
+      anchors.verticalCenter: parent.verticalCenter
+      anchors.right: parent.right
+      margin-right: 5
+      margin-bottom: 17
+
+    FightBalancedBox
+      id: fightBalancedBox
+      anchors.top: prev.bottom
+      anchors.horizontalCenter: prev.horizontalCenter
+    FightDefensiveBox
+      id: fightDefensiveBox
+      anchors.top: prev.bottom
+      anchors.horizontalCenter: prev.horizontalCenter

@@ -1,0 +1,16 @@
+# PokeXarkos Client Update
+
+Arquivos usados pelo launcher para atualizar o cliente via GitHub.
+
+Manifest principal:
+
+```text
+https://raw.githubusercontent.com/nadielmiranda843-lgtm/pokexarkos-client/main/version.json
+```
+
+Executaveis baixados pelo launcher:
+
+```text
+https://raw.githubusercontent.com/nadielmiranda843-lgtm/pokexarkos-client/main/pokexarkos_gl.exe
+https://raw.githubusercontent.com/nadielmiranda843-lgtm/pokexarkos-client/main/pokexarkos_dx.exe
+```

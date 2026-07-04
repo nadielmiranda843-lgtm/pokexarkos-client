@@ -1,0 +1,243 @@
+PlayerPreviewWindow < UIWindow
+  background-color: #000000
+  border-width: 1
+  border-color: #3d8bc5
+  focusable: true
+  draggable: true
+  phantom: false
+
+PlayerPreviewWindow
+  id: inspectPlayerWindow
+  size: 390 326
+  anchors.centerIn: parent
+  visible: false
+
+  Panel
+    anchors.fill: parent
+    background-color: #000000
+
+  Panel
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 48
+    background-color: #000000
+
+    Label
+      id: inspectNameLabel
+      anchors.left: parent.left
+      anchors.right: inspectCloseButton.left
+      anchors.verticalCenter: parent.verticalCenter
+      margin-left: 18
+      margin-right: 14
+      text-align: left
+      text-wrap: false
+      text-auto-resize: true
+      color: #f2fbff
+      font: terminus-14px-bold
+      text: Jogador
+
+    Button
+      id: inspectCloseButton
+      anchors.top: parent.top
+      anchors.right: parent.right
+      margin-top: 8
+      margin-right: 10
+      size: 30 30
+      text: X
+      background-color: #6c2f37
+      border-width: 1
+      border-color: #d98b95
+      color: #ffffff
+      font: sans-bold-16px
+
+    Panel
+      anchors.left: parent.left
+      anchors.right: parent.right
+      anchors.bottom: parent.bottom
+      height: 1
+      background-color: #3d8bc5
+
+  Panel
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 62
+    margin-left: 16
+    size: 132 132
+    background-color: #000000
+    border-width: 1
+    border-color: #2f6b96
+
+    UICreature
+      id: inspectOutfitBox
+      size: 100 100
+      anchors.centerIn: parent
+      old-scaling: true
+      phantom: true
+
+  Panel
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 62
+    margin-left: 164
+    size: 210 196
+    background-color: #000000
+    border-width: 1
+    border-color: #2f6b96
+
+    Label
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 18
+      margin-left: 16
+      color: #87aeca
+      font: verdana-11px-rounded
+      text: Rank
+
+    Panel
+      id: inspectRankValueBox
+      anchors.top: parent.top
+      anchors.right: parent.right
+      margin-top: 12
+      margin-right: 16
+      size: 118 28
+      background-color: #0a0a0a
+      border-width: 1
+      border-color: #2a5877
+
+      Label
+        id: value
+        anchors.fill: parent
+        text-align: center
+        color: #f2fbff
+        font: verdana-11px-antialised
+
+    Label
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 54
+      margin-left: 16
+      color: #87aeca
+      font: verdana-11px-rounded
+      text: Vida
+
+    Panel
+      id: inspectHealthValueBox
+      anchors.top: parent.top
+      anchors.right: parent.right
+      margin-top: 48
+      margin-right: 16
+      size: 118 16
+      background-color: #0a0a0a
+      border-width: 1
+      border-color: #2a5877
+
+      Panel
+        id: fill
+        anchors.left: parent.left
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        width: 118
+        background-color: #2fbf71
+
+      Label
+        id: value
+        anchors.fill: parent
+        text-align: center
+        color: #f2fbff
+        font: verdana-11px-antialised
+
+    Label
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 78
+      margin-left: 16
+      color: #87aeca
+      font: verdana-11px-rounded
+      text: Level
+
+    Panel
+      id: inspectLevelValueBox
+      anchors.top: parent.top
+      anchors.right: parent.right
+      margin-top: 72
+      margin-right: 16
+      size: 118 28
+      background-color: #0a0a0a
+      border-width: 1
+      border-color: #2a5877
+
+      Label
+        id: value
+        anchors.fill: parent
+        text-align: center
+        color: #f2fbff
+        font: verdana-11px-antialised
+
+    Label
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 118
+      margin-left: 16
+      color: #87aeca
+      font: verdana-11px-rounded
+      text: Reset
+
+    Panel
+      id: inspectResetValueBox
+      anchors.top: parent.top
+      anchors.right: parent.right
+      margin-top: 112
+      margin-right: 16
+      size: 118 28
+      background-color: #0a0a0a
+      border-width: 1
+      border-color: #2a5877
+
+      Label
+        id: value
+        anchors.fill: parent
+        text-align: center
+        color: #f2fbff
+        font: verdana-11px-antialised
+
+    Label
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 154
+      margin-left: 16
+      color: #87aeca
+      font: verdana-11px-rounded
+      text: Grupo
+
+    Panel
+      id: inspectGroupValueBox
+      anchors.top: parent.top
+      anchors.right: parent.right
+      margin-top: 148
+      margin-right: 16
+      size: 118 28
+      background-color: #0a0a0a
+      border-width: 1
+      border-color: #2a5877
+
+      Label
+        id: value
+        anchors.fill: parent
+        text-align: center
+        color: #f2fbff
+        font: verdana-11px-antialised
+
+  Button
+    id: inspectChatButton
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.bottom: parent.bottom
+    margin-bottom: 16
+    size: 180 38
+    text: CHAT
+    background-color: #0a1218
+    image-color: #2f7fc8
+    border-width: 1
+    border-color: #6ec1ff
+    color: #ffffff
+    font: sans-bold-16px

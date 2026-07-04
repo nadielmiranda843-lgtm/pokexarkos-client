@@ -1,0 +1,63 @@
+Window < UIWindow
+  font: verdana-11px-antialised
+  size: 200 200
+  opacity: 1
+  color: #dfdfdf
+  text-offset: 0 6
+  text-align: top
+  image-source: /images/ui/window
+  image-border: 6
+  image-border-top: 27
+  padding-top: 36
+  padding-left: 16
+  padding-right: 16
+  padding-bottom: 16
+
+  $disabled:
+    color: #dfdfdf88
+
+  $dragging:
+    opacity: 0.8
+
+HeadlessWindow < UIWindow
+  image-source: /images/ui/window_headless
+  image-border: 5
+  padding: 5
+
+MainWindow < Window
+  anchors.centerIn: parent
+
+StaticWindow < Window
+  &static: true
+
+StaticMainWindow < StaticWindow
+  anchors.centerIn: parent
+
+CustomJanela < Window
+  anchors.centerIn: parent
+  color: #D0A3FF
+  image-source: /images/ui/window_headless
+  image-border: 5
+  text-align: top-left
+  icon-align: topLeft
+  icon-offset: 20 15
+  icon-size: 42 42
+  text-offset: 70 20
+  font: sans-bold-16px
+  padding-top: 0
+  @onEscape: closeWindow(self, true)
+
+CloseWindow < UIButton
+  size: 40 40
+  cursor: pointer
+  anchors.top: parent.top
+  anchors.right: parent.right
+  margin-top: 12
+  margin-right: 5
+  opacity: 1
+  image-source: /images/ui/closewindow
+  @onClick: closeWindow(self)
+  $pressed:
+    size: 39 39
+  $hover:
+    opacity: 0.8

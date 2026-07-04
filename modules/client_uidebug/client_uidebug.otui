@@ -1,0 +1,38 @@
+HighlightWidget < Panel
+  id: highlightWidget
+  focusable: false
+  phantom: true
+  background-color: #00000099
+
+clientUiDebugLabelDown < UILabel
+  id: clientUiDebugLabelDown
+  focusable: false
+  phantom: true
+  background-color: #00000099
+  color: #FF7777
+  anchors.bottom: parent.bottom
+  anchors.horizontalCenter: parent.horizontalCenter
+  margin-bottom: 1
+  text-auto-resize: true
+  padding: 2
+  font: verdana-11px-rounded
+
+Panel
+  id: clientUiDebug
+  anchors.top: parent.top
+  anchors.left: parent.left
+  anchors.right: parent.right
+  height: 50
+  margin-top: 1
+  focusable: false
+
+  UILabel
+    id: clientUiDebugLabel
+    color: #FF7777
+    background-color: #00000099
+    anchors.fill: parent
+    text-align: left
+    text-auto-resize: false
+    text-wrap: true
+    padding: 2
+    font: verdana-11px-rounded

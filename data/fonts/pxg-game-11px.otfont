@@ -1,0 +1,7 @@
+Font
+  name: pxg-game-11px
+  texture: pxg-game-11px
+  height: 14
+  glyph-size: 16 16
+  space-width: 4
+  spacing: 0 0

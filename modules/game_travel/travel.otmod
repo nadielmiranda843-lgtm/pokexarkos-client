@@ -1,0 +1,8 @@
+Module
+  name: game_travel
+  description: Premium travel menu
+  author: OpenAI
+  sandboxed: true
+  scripts: [ travel ]
+  @onLoad: init()
+  @onUnload: terminate()

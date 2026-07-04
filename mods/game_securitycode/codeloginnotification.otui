@@ -1,0 +1,56 @@
+Panel
+  size: 720 90
+  phantom: true
+  visible: false
+  focusable: false
+  background-color: #00000890
+  border: 1 #ff7974
+  anchors.top: parent.top
+  anchors.horizontalCenter: parent.horizontalCenter
+  margin-top: 160
+
+  UIButton
+    id: ReedemCodeIcon
+    size: 24 24
+    image-source: /images/game/others_vitoredu/lockpad.png
+    image-auto-resize: true
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.top: parent.top
+    margin-top: -10
+
+  Label
+    !text: tr("O seu personagem está com as ações de mover objetos bloqueadas até que você confirme o seu código de segurança.")
+    id: TextBora
+    text-align: center
+    text-wrap: true
+    font: verdana-11px-rounded
+    text-auto-resize: true
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.verticalCenter: parent.verticalCenter
+    margin-top: -10
+
+  UIButton
+    anchors.top: parent.top
+    anchors.right: parent.right
+    margin-top: 5
+    margin-right: 5
+    size: 22 22
+    phantom: false
+    image-source: images/close_icon
+    image-clip: 0 0 22 22
+    @onClick: codeLoginNotificationWindowHide()
+
+    $hover:
+      image-clip: 0 22 22 22
+
+    $pressed:
+      image-clip: 0 44 22 22
+
+  Button
+    id: DiamondsSacar
+    !text: tr('Abrir janela')
+    width: 100
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.top: TextBora.bottom
+    margin-top: 10
+    @onClick: g_game.talk("!@%OPEN_codeconfirm")

@@ -1,0 +1,97 @@
+PokeBarRow < UIButton
+  size: 183 47
+  image-source: images/uibutton
+  image-border: 10
+  anchors.right: parent.right
+  margin-right: 8
+  draggable: false
+  cursor: pointer
+  opacity: 1
+
+  $hover:
+    opacity: 0.7
+
+  UICreature
+    id: portrait
+    size: 32 32
+    anchors.verticalCenter: parent.verticalCenter
+    anchors.left: parent.left
+    margin-left: 10
+    draggable: false
+    old-scaling: true
+    phantom: true
+
+  UIWidget
+    id: portraitIcon
+    size: 32 32
+    anchors.verticalCenter: parent.verticalCenter
+    anchors.left: parent.left
+    margin-left: 10
+    draggable: false
+    phantom: true
+
+  ProgressBar10Lil
+    id: life
+    image-source: images/progress
+    icon: images/progressBar_red
+    size: 114 16
+    anchors.top: parent.top
+    anchors.right: parent.right
+    anchors.left: portrait.right
+    margin: 10
+    margin-top: 20
+    phantom: true
+    draggable: false
+
+  Label
+    id: pokeName
+    text: ''
+    text-auto-resize: false
+    font: verdana-11px-rounded
+    color: gray
+    anchors.top: parent.top
+    anchors.left: life.left
+    anchors.right: parent.right
+    margin-top: 5
+    draggable: false
+    phantom: true
+
+  UIButton
+    id: pokemonGender
+    size: 11 11
+    anchors.top: parent.top
+    anchors.right: parent.right
+    margin-top: 5
+    margin-right: 124
+    draggable: false
+    visible: false
+    phantom: true
+
+  Label
+    id: percent
+    text: 0%
+    text-auto-resize: true
+    font: verdana-11px-rounded
+    color: #c9c9c9
+    anchors.top: parent.top
+    anchors.right: parent.right
+    margin-top: 23
+    margin-right: 50
+    draggable: false
+    phantom: true
+
+UIWindow
+  id: pokeBar
+  font: verdana-11px-rounded
+  color: #98d0ed
+  text-offset: -0 10
+  size: 198 355
+  anchors.top: parent.top
+  anchors.left: parent.left
+  margin-top: 170
+  margin-left: 30
+  image-border-top: 50
+  image-border-bottom: 30
+  image-border-right: 18
+  image-border-left: 33
+  focusable: false

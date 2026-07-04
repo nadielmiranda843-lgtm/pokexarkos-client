@@ -1,0 +1,115 @@
+SpellButton < UIButton
+  size: 32 32
+  focusable: false
+  image-color: white
+  image-size: 32 32
+  anchors.left: parent.left
+  anchors.top: parent.top
+  cursor: pointer
+
+  $!hover:
+    image-border: 3
+  $hover:
+    image-border: 2
+    image-color: #ffffff99
+  $pressed:
+    image-color: #999999
+  $disabled:
+    image-color: #ffffff66
+
+SpellProgressSpell < UIProgressRect
+  background: #585858AA
+  percent: 100
+  focusable: false
+  font: verdana-11px-rounded
+  color: green
+  anchors.left: parent.left
+  anchors.top: parent.top
+  size: 32 32
+
+SpellSlot < UIWidget
+  size: 32 32
+  focusable: false
+
+  SpellButton
+    id: spellIcon
+    anchors.fill: parent
+
+  SpellProgressSpell
+    id: spellProgress
+    anchors.fill: parent
+    phantom: true
+
+  Label
+    id: hotkeyText
+    font: verdana-11px-rounded
+    color: #f1f5f9
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+    margin-bottom: 0
+    margin-right: 1
+    phantom: true
+
+Window
+  !text: tr('Moves')
+  focusable: false
+
+  Panel
+    id: mainWindow
+    focusable: false
+    opacity: 0.95
+    anchors.fill: parent
+
+    Panel
+      id: movesVertical
+      anchors.fill: parent
+      layout:
+        type: verticalBox
+        spacing: 5
+
+    Panel
+      id: movesHorizontal
+      anchors.fill: parent
+      visible: false
+      layout:
+        type: horizontalBox
+        spacing: 5
+
+MoveHotkeyAssignWindow < MainWindow
+  id: moveHotkeyAssignWindow
+  !text: tr('Set Move Hotkey')
+  size: 320 130
+  @onEscape: self:destroy()
+
+  Label
+    !text: tr('Pressione a tecla para esta magia')
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.top: parent.top
+    text-align: center
+    text-auto-resize: true
+
+  Label
+    id: comboPreview
+    !text: tr('Tecla atual: none')
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.top: prev.bottom
+    margin-top: 8
+    text-auto-resize: true
+
+  Button
+    id: addButton
+    !text: tr('Salvar')
+    width: 64
+    anchors.right: next.left
+    anchors.bottom: parent.bottom
+    margin-right: 8
+    enabled: false
+
+  Button
+    id: cancelButton
+    !text: tr('Cancelar')
+    width: 64
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    @onClick: self:getParent():destroy()

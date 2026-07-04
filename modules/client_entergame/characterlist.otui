@@ -1,0 +1,144 @@
+CharacterWidget < UIWidget
+  height: 14
+  background-color: alpha
+  &updateOnStates: |
+    function(self)
+      local children = self:getChildren()
+      for i=1,#children do
+        children[i]:setOn(self:isFocused())
+      end
+    end
+  @onFocusChange: self:updateOnStates()
+  @onSetup: self:updateOnStates()
+
+  $focus:
+    background-color: #000000ab
+
+  Label
+    id: name
+    color: #bbbbbb
+    anchors.top: parent.top
+    anchors.left: parent.left
+    font: verdana-11px-rounded
+    text-auto-resize: true
+    background-color: alpha
+    text-offset: 2 0
+
+    $on:
+      color: #ffffff
+
+  Label
+    id: worldName
+    color: #bbbbbb
+    anchors.top: parent.top
+    anchors.right: parent.right
+    margin-right: 5
+    font: verdana-11px-rounded
+    text-auto-resize: true
+    background-color: alpha
+    &baseText: '(%s)'
+
+    $on:
+      color: #ffffff
+
+UIWindow
+  id: charactersWindow
+  visible: false
+  size: 570 600
+  padding: 0
+  anchors.centerIn: parent
+  image-source: /images/ui/entergame/backgroundCharacter
+  draggable: false
+  $mobile:
+    size: 350 280
+  @onEnter: CharacterList.doLogin()
+  @onEscape: CharacterList.hide(true)
+  @onSetup: |
+    g_keyboard.bindKeyPress('Up', function() self:getChildById('characters'):focusPreviousChild(KeyboardFocusReason) end, self)
+    g_keyboard.bindKeyPress('Down', function() self:getChildById('characters'):focusNextChild(KeyboardFocusReason) end, self)  
+
+  TextList
+    id: characters
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.bottom: accountStatusLabel.top
+    margin: 110 150 10 140
+    border-color: alpha
+    background-color: alpha
+    padding: 1
+    focusable: false
+    vertical-scrollbar: characterListScrollBar
+    auto-focus: first
+
+  VerticalScrollBar
+    id: characterListScrollBar
+    anchors.top: characters.top
+    anchors.bottom: characters.bottom
+    anchors.left: characters.right
+    margin: 5
+    step: 14
+    pixels-scroll: true
+    $!on:
+      width: 0
+
+  Label
+    id: accountStatusCaption
+    !text: tr('Account Status') .. ':'
+    anchors.left: parent.left
+    anchors.bottom: separator.top
+    margin-bottom: 5
+    visible: false
+
+  Label
+    id: accountStatusLabel
+    !text: tr('Free Account')
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.bottom: buttonOk.top
+    margin-bottom: 5
+    text-auto-resize: true
+    font: sans-bold-16px
+
+    $on:
+      color: #FF0000
+
+  HorizontalSeparator
+    id: separator
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.bottom: next.top
+    margin-bottom: 10
+    visible: false
+
+  Button
+    id: autoReconnect
+    width: 40
+    anchors.verticalCenter: next.verticalCenter
+    anchors.left: next.right
+    margin-left: 3
+    
+    $!on:
+      image-color: red    
+      !text: tr('Off')
+
+    $on:
+      !text: tr('On')
+      image-color: green
+
+  ButtonBase
+    id: buttonOk
+    size: 250 55
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.bottom: parent.bottom
+    margin-bottom: 125
+    image-source: /images/ui/entergame/login
+    @onClick: CharacterList.doLogin()
+
+  Button
+    id: buttonCancel
+    text: Cancelar
+    width: 64
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    @onClick: CharacterList.hide(true)
+    visible: false

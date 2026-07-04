@@ -1,0 +1,150 @@
+PubCommunityWindow < UIWindow
+  background-color: #000000
+  border-width: 1
+  border-color: #3d8bc5
+  focusable: true
+  draggable: true
+  phantom: false
+
+PubCommunityWindow
+  id: pubCommunityWindow
+  size: 860 540
+  anchors.centerIn: parent
+  visible: false
+
+  Panel
+    anchors.fill: parent
+    background-color: #071521
+
+  Panel
+    id: headerPanel
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.top: parent.top
+    height: 64
+    margin: 10
+    image-source: /mods/game_shop/assets/shop_header.png
+    image-border: 8
+
+    Label
+      id: titleLabel
+      text: Central de Rank
+      anchors.left: parent.left
+      anchors.right: refreshButton.left
+      anchors.top: parent.top
+      margin-left: 18
+      margin-right: 12
+      margin-top: 12
+      color: #f4fbff
+      font: verdana-11px-rounded
+
+    Label
+      id: summaryLabel
+      text: Pontos de Rank: 0 | Tokens: 0 | Rank: Novato
+      anchors.left: parent.left
+      anchors.right: refreshButton.left
+      anchors.top: titleLabel.bottom
+      margin-left: 18
+      margin-right: 12
+      margin-top: 6
+      color: #9ad8ff
+      font: verdana-11px-antialised
+
+    Button
+      id: refreshButton
+      text: Atualizar
+      anchors.right: closeButton.left
+      anchors.verticalCenter: parent.verticalCenter
+      margin-right: 8
+      width: 90
+
+    Button
+      id: closeButton
+      text: Fechar
+      anchors.right: parent.right
+      anchors.verticalCenter: parent.verticalCenter
+      margin-right: 16
+      width: 80
+
+  Panel
+    id: leftPanel
+    anchors.left: parent.left
+    anchors.top: headerPanel.bottom
+    anchors.bottom: parent.bottom
+    width: 170
+    margin-left: 10
+    margin-top: 6
+    margin-bottom: 10
+    background-color: #0c2232
+    border-width: 1
+    border-color: #2c5977
+    layout:
+      type: verticalBox
+      fit-children: true
+      spacing: 6
+
+    Button
+      id: rankTabButton
+      text: Rank
+      width: 150
+      margin-top: 10
+      margin-left: 10
+
+    Button
+      id: shopTabButton
+      text: Loja
+      width: 150
+      margin-left: 10
+
+    Button
+      id: tutorialTabButton
+      text: Tutorial
+      width: 150
+      margin-left: 10
+
+  Panel
+    id: contentPanel
+    anchors.left: leftPanel.right
+    anchors.right: parent.right
+    anchors.top: headerPanel.bottom
+    anchors.bottom: parent.bottom
+    margin: 10
+    margin-top: 6
+    image-source: /mods/game_shop/assets/shop_left_panel.png
+    image-border: 8
+
+    Label
+      id: messageLabel
+      anchors.left: parent.left
+      anchors.right: parent.right
+      anchors.top: parent.top
+      margin-left: 12
+      margin-right: 12
+      margin-top: 12
+      height: 22
+      color: #ffdb8a
+      font: verdana-11px-antialised
+
+    ScrollablePanel
+      id: listPanel
+      anchors.left: parent.left
+      anchors.right: listScrollBar.left
+      anchors.top: messageLabel.bottom
+      anchors.bottom: parent.bottom
+      margin-left: 12
+      margin-right: 8
+      margin-bottom: 12
+      margin-top: 4
+      vertical-scrollbar: listScrollBar
+      layout:
+        type: verticalBox
+        spacing: 6
+
+    VerticalScrollBar
+      id: listScrollBar
+      anchors.top: messageLabel.bottom
+      anchors.right: parent.right
+      anchors.bottom: parent.bottom
+      margin-right: 4
+      margin-top: 4
+      margin-bottom: 12

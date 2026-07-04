@@ -1,0 +1,9 @@
+Module
+  name: client_hide
+  description: Botao
+  author: Fravio
+  website: 
+  sandboxed: true
+  scripts: [ hide ]
+  @onLoad: init()
+  @onUnload: terminate()

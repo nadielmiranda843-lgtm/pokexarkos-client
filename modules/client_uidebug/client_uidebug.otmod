@@ -1,0 +1,9 @@
+Module
+  name: client_uidebug
+  description: Obtenha informação de elementos
+  author: Lueys
+  reloadable: false
+  sandboxed: true
+  scripts: [ client_uidebug ]
+  @onLoad: init()
+  @onUnload: terminate()

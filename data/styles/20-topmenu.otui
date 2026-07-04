@@ -1,0 +1,37 @@
+TopButton < UIButton
+  image-color: #ffffffff
+  width: 32
+  
+  $hover !disabled:
+    image-color: #ffffff99
+
+  $pressed:
+    image-color: #FFFF33
+
+  $disabled:
+    image-color: #ffffff44
+    icon-color: #ffffff44
+
+TopToggleButton < UIButton
+  size: 40 40
+
+TopMenuButtonsPanel < Panel
+  layout:
+    type: horizontalBox
+    spacing: 4
+    fit-children: true
+  padding: 4 4
+
+TopMenuPanel < Panel
+  height: 43
+  background-color:#01010124
+  focusable: false
+
+TopMenuFrameCounterLabel < Label
+  font: verdana-11px-rounded
+  color: white
+  margin-top: 4
+  margin-left: 4
+
+TopMenuPingLabel < Label
+  font: verdana-11px-rounded

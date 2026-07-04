@@ -1,0 +1,11 @@
+Module
+  name: game_cityteleport
+  description: City Teleport
+  author: Codex
+  website: none
+  autoload: true
+  autoload-priority: 1000
+  sandboxed: true
+  scripts: [ cityteleport ]
+  @onLoad: init()
+  @onUnload: terminate()

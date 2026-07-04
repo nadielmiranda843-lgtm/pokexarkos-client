@@ -1,0 +1,11 @@
+Module
+  name: game_pokedex
+  description: Pokedex
+  author: Lueys
+  website: none
+  autoload: true
+  autoload-priority: 1000
+  sandboxed: true
+  scripts: [ pokedex ]
+  @onLoad: init()
+  @onUnload: terminate()

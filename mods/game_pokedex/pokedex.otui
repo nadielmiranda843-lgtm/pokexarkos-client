@@ -1,0 +1,700 @@
+PokedexWindow < UIWidget
+  size: 530 385
+  padding: 0
+  margin: 0
+  focusable: true
+  draggable: true
+  !text: tr('')
+  background-color: #00000000
+  border-width: 0
+  @onEscape: self:hide()
+
+PokedexTitleText < Label
+  color: #7ce6ff
+  font: terminus-18px-bold
+
+PokedexWindowTitle < Label
+  color: #f6fbff
+  font: terminus-18px-bold
+
+PokedexHeaderText < Label
+  color: #e5e1d9
+  font: verdana-11px-monochrome
+
+PokedexSectionTitle < Label
+  color: #36d3ff
+  font: terminus-16px-bold
+
+PokedexStatText < Label
+  color: #ece8df
+  font: verdana-11px-monochrome
+
+PokedexInfoValue < Label
+  color: #63dfff
+  font: verdana-11px-monochrome
+
+PokedexSummaryValue < Label
+  color: #63dfff
+  font: verdana-11px-monochrome
+
+PokedexValueText < Label
+  color: #ffffff
+  font: verdana-11px-monochrome
+
+PokedexAccentValue < Label
+  color: #63dfff
+  font: verdana-11px-monochrome
+
+PokedexPriceValue < Label
+  color: #edc46f
+  font: terminus-14px-bold
+
+PokedexBodyText < Label
+  color: #f1eee8
+  font: verdana-11px-monochrome
+  text-wrap: true
+  text-auto-resize: false
+
+PokedexCloseButton < UIWidget
+  size: 34 34
+  background-color: #00000000
+  border-width: 0
+  focusable: true
+  phantom: false
+  opacity: 1.0
+  cursor: pointer
+  tooltip: Fechar
+
+  $hover:
+    opacity: 0.92
+
+  $pressed:
+    opacity: 0.82
+
+  ImageView
+    id: closeButtonIcon
+    anchors.fill: parent
+    image-source: /mods/game_pokedex/assets/close_button.png
+    border-width: 0
+    phantom: true
+
+DexMissionButton < UIWidget
+  size: 108 108
+  background-color: #00000000
+  border-width: 0
+  opacity: 1.0
+  cursor: pointer
+  tooltip: Central de Missoes Dex
+  focusable: true
+  phantom: false
+  image-source: /mods/game_pokedex/assets/dex_mission_button_frame.png
+  image-border: 0
+  image-size: 108 108
+
+  $hover:
+    opacity: 0.96
+
+  $pressed:
+    opacity: 0.88
+
+DexMissionClientButton < UIWidget
+  size: 130 28
+  background-color: #00000000
+  border-width: 0
+  opacity: 1.0
+  cursor: pointer
+  tooltip: Central de Missoes
+  focusable: true
+  phantom: false
+  image-source: /mods/game_pokedex/assets/central_missoes_button_bg.png
+  image-border: 0
+  image-size: 130 28
+
+  $hover:
+    opacity: 1.0
+
+  $pressed:
+    opacity: 0.92
+
+  PokedexHeaderText
+    id: dexMissionClientButtonLabel
+    anchors.fill: parent
+    margin-left: 8
+    margin-right: 8
+    color: #eff8ff
+    font: verdana-11px-monochrome
+    text-align: center
+    text: Central de Missoes
+    phantom: true
+
+PokedexWindow
+  id: pokedexWindow
+  visible: false
+
+  UIWidget
+    id: backgroundFrame
+    anchors.fill: parent
+    image-source: /mods/game_pokedex/assets/main_background.png
+    image-border: 0
+    image-size: 530 385
+    phantom: true
+
+  PokedexWindowTitle
+    anchors.top: parent.top
+    anchors.horizontalCenter: parent.horizontalCenter
+    margin-top: 12
+    visible: false
+    text: POKEDEX
+
+  PokedexCloseButton
+    anchors.top: parent.top
+    anchors.right: parent.right
+    margin-top: 7
+    margin-right: 7
+    @onMouseRelease: self:getParent():hide()
+
+  DexMissionButton
+    id: dexMissionButton
+    anchors.top: parent.top
+    anchors.horizontalCenter: parent.horizontalCenter
+    margin-top: 208
+
+    ImageView
+      id: dexMissionIcon
+      anchors.centerIn: parent
+      size: 98 98
+      image-source: /mods/game_pokedex/assets/mission_dex_icon.png
+      border-width: 0
+      phantom: true
+
+  DexMissionClientButton
+    id: dexMissionClientButton
+    anchors.top: dexMissionButton.bottom
+    anchors.horizontalCenter: parent.horizontalCenter
+    margin-top: 6
+
+  PokedexTitleText
+    id: pokemonName
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 30
+    margin-left: 24
+    width: 150
+    visible: false
+    text: 'Pokemon'
+
+  PokedexHeaderText
+    id: raceName
+    anchors.top: pokemonName.bottom
+    anchors.left: pokemonName.left
+    margin-top: 4
+    width: 150
+    visible: false
+    text: 'Tipo: --'
+
+  PokedexHeaderText
+    id: tierStars
+    anchors.top: raceName.bottom
+    anchors.left: raceName.left
+    margin-top: 2
+    width: 150
+    visible: false
+    text: 'Tier: --'
+
+  UIWidget
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 72
+    margin-left: 214
+    size: 71 17
+    image-source: /mods/game_pokedex/assets/moves_header.png
+    image-border: 0
+    image-size: 71 17
+    phantom: true
+
+  PokedexSectionTitle
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 72
+    margin-left: 214
+    width: 71
+    text-align: center
+    text: Pokemon
+
+  UIWidget
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 88
+    margin-left: 214
+    size: 104 87
+    image-source: /mods/game_pokedex/assets/portrait_frame.png
+    image-border: 0
+    image-size: 104 87
+    phantom: true
+
+  Panel
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 102
+    margin-left: 237
+    size: 58 58
+    background-color: #00000000
+    border-width: 0
+
+    UIWidget
+      id: pokemonPortraitIcon
+      anchors.centerIn: parent
+      size: 1 1
+      visible: false
+
+    UICreature
+      id: pokemonOutfit
+      anchors.centerIn: parent
+      size: 46 46
+      old-scaling: true
+      phantom: true
+
+  UIWidget
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 72
+    margin-left: 24
+    size: 128 17
+    image-source: /mods/game_pokedex/assets/info_header.png
+    image-border: 0
+    image-size: 128 17
+    phantom: true
+
+  PokedexSectionTitle
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 72
+    margin-left: 42
+    text: Informacoes
+
+  UIWidget
+    id: infoAreaFrame
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 88
+    margin-left: 24
+    size: 178 91
+    image-source: /mods/game_pokedex/assets/info_panel.png
+    image-border: 0
+    image-size: 178 91
+    phantom: true
+
+  ScrollablePanel
+    id: infoArea
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 94
+    margin-left: 34
+    size: 140 78
+    background-color: #00000000
+    border-width: 0
+    vertical-scrollbar: infoScrollBar
+
+    PokedexTitleText
+      id: infoPokemonName
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-left: 8
+      width: 108
+      text: 'Pokemon'
+
+    PokedexHeaderText
+      id: infoRaceName
+      anchors.top: infoPokemonName.bottom
+      anchors.left: parent.left
+      margin-top: 4
+      margin-left: 8
+      width: 108
+      text: 'Tipo: --'
+
+    PokedexHeaderText
+      id: infoTierStars
+      anchors.top: infoRaceName.bottom
+      anchors.left: parent.left
+      margin-top: 2
+      margin-left: 8
+      width: 108
+      text: 'Tier: --'
+
+    PokedexStatText
+      anchors.top: infoTierStars.bottom
+      anchors.left: parent.left
+      margin-top: 8
+      margin-left: 8
+      text: Level:
+
+    PokedexInfoValue
+      id: infoLevel
+      color: #7dff8a
+      anchors.verticalCenter: prev.verticalCenter
+      anchors.right: parent.right
+      margin-right: 8
+      width: 72
+      text-align: right
+      text: '--'
+
+    PokedexStatText
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      margin-top: 7
+      margin-left: 8
+      text: Boost:
+
+    PokedexInfoValue
+      id: infoBoost
+      color: #5fd8ff
+      anchors.verticalCenter: prev.verticalCenter
+      anchors.right: parent.right
+      margin-right: 8
+      width: 72
+      text-align: right
+      text: '--'
+
+    PokedexStatText
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      margin-top: 7
+      margin-left: 8
+      text: Love:
+
+    PokedexInfoValue
+      id: infoLove
+      color: #ff8ad8
+      anchors.verticalCenter: prev.verticalCenter
+      anchors.right: parent.right
+      margin-right: 8
+      width: 72
+      text-align: right
+      text: '--'
+
+    PokedexStatText
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      margin-top: 7
+      margin-left: 8
+      text: XP:
+
+    PokedexAccentValue
+      id: infoXp
+      color: #8be9ff
+      anchors.verticalCenter: prev.verticalCenter
+      anchors.right: parent.right
+      margin-right: 8
+      width: 72
+      text-align: right
+      text: '--'
+
+    PokedexStatText
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      margin-top: 7
+      margin-left: 8
+      text: Price:
+
+    PokedexPriceValue
+      id: priceInfo
+      color: #ffd36b
+      anchors.verticalCenter: prev.verticalCenter
+      anchors.right: parent.right
+      margin-right: 8
+      width: 72
+      text-align: right
+      text: '--'
+
+  VerticalScrollBar
+    id: infoScrollBar
+    anchors.top: infoArea.top
+    anchors.bottom: infoArea.bottom
+    anchors.left: infoArea.right
+    margin-left: 2
+    step: 14
+    pixels-scroll: true
+
+  UIWidget
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 72
+    margin-left: 340
+    size: 94 17
+    image-source: /mods/game_pokedex/assets/status_header.png
+    image-border: 0
+    image-size: 94 17
+    phantom: true
+
+  PokedexSectionTitle
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 72
+    margin-left: 354
+    text: Status
+
+  UIWidget
+    id: summaryValuesAreaFrame
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 88
+    margin-left: 340
+    size: 164 113
+    image-source: /mods/game_pokedex/assets/status_panel.png
+    image-border: 0
+    image-size: 164 113
+    phantom: true
+
+  Panel
+    id: summaryValuesArea
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 94
+    margin-left: 350
+    size: 152 74
+    background-color: #00000000
+    border-width: 0
+
+    PokedexStatText
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 4
+      margin-left: 8
+      text: HP:
+
+    PokedexSummaryValue
+      id: statHealthLabel
+      color: #7dff8a
+      anchors.verticalCenter: prev.verticalCenter
+      anchors.right: parent.right
+      margin-right: 10
+      width: 74
+      text-align: right
+      text: '--'
+
+    PokedexStatText
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      margin-top: 6
+      margin-left: 8
+      text: Atk:
+
+    PokedexSummaryValue
+      id: statAttackLabel
+      color: #ffb36b
+      anchors.verticalCenter: prev.verticalCenter
+      anchors.right: parent.right
+      margin-right: 10
+      width: 74
+      text-align: right
+      text: '--'
+
+    PokedexStatText
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      margin-top: 6
+      margin-left: 8
+      text: M.Atk:
+
+    PokedexSummaryValue
+      id: statMagicAttackLabel
+      color: #c38bff
+      anchors.verticalCenter: prev.verticalCenter
+      anchors.right: parent.right
+      margin-right: 10
+      width: 74
+      text-align: right
+      text: '--'
+
+    PokedexStatText
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      margin-top: 6
+      margin-left: 8
+      text: M.Def:
+
+    PokedexSummaryValue
+      id: statMagicDefenseLabel
+      color: #7fe7ff
+      anchors.verticalCenter: prev.verticalCenter
+      anchors.right: parent.right
+      margin-right: 10
+      width: 74
+      text-align: right
+      text: '--'
+
+    PokedexStatText
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      margin-top: 6
+      margin-left: 8
+      text: Armor:
+
+    PokedexSummaryValue
+      id: statArmorLabel
+      color: #ffe07a
+      anchors.verticalCenter: prev.verticalCenter
+      anchors.right: parent.right
+      margin-right: 10
+      width: 74
+      text-align: right
+      text: '--'
+
+    PokedexStatText
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      margin-top: 6
+      margin-left: 8
+      text: Speed:
+
+    PokedexSummaryValue
+      id: statSpeedLabel
+      color: #ff8a8a
+      anchors.verticalCenter: prev.verticalCenter
+      anchors.right: parent.right
+      margin-right: 10
+      width: 74
+      text-align: right
+      text: '--'
+
+  UIWidget
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 206
+    margin-left: 340
+    size: 71 17
+    image-source: /mods/game_pokedex/assets/moves_header.png
+    image-border: 0
+    image-size: 71 17
+    phantom: true
+
+  PokedexSectionTitle
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 206
+    margin-left: 352
+    text: MOVES
+
+  UIWidget
+    id: movesFrame
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 222
+    margin-left: 340
+    size: 164 119
+    image-source: /mods/game_pokedex/assets/moves_panel.png
+    image-border: 0
+    image-size: 164 119
+    phantom: true
+
+  ScrollablePanel
+    id: movesScrollArea
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 228
+    margin-left: 348
+    size: 128 98
+    background-color: #00000000
+    border-width: 0
+    vertical-scrollbar: movesScrollBar
+
+    PokedexBodyText
+      id: movesLabel
+      anchors.top: parent.top
+      anchors.left: parent.left
+      width: 118
+      text-auto-resize: true
+      text: 'Nenhum'
+
+  VerticalScrollBar
+    id: movesScrollBar
+    anchors.top: movesScrollArea.top
+    anchors.bottom: movesScrollArea.bottom
+    anchors.left: movesScrollArea.right
+    margin-left: 2
+    step: 14
+    pixels-scroll: true
+
+  UIWidget
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 201
+    margin-left: 24
+    size: 129 17
+    image-source: /mods/game_pokedex/assets/habilidades_header.png
+    image-border: 0
+    image-size: 129 17
+    phantom: true
+
+  PokedexSectionTitle
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 201
+    margin-left: 38
+    text: Habilidades
+
+  UIWidget
+    id: abilitiesFrame
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 217
+    margin-left: 24
+    size: 162 59
+    image-source: /mods/game_pokedex/assets/habilidades_panel.png
+    image-border: 0
+    image-size: 162 59
+    phantom: true
+
+  PokedexBodyText
+    id: abilitiesLabel
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 222
+    margin-left: 34
+    size: 150 36
+    background-color: #00000000
+    border-width: 0
+    padding: 4
+    text: 'Nenhuma'
+
+  UIWidget
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 284
+    margin-left: 24
+    size: 99 17
+    image-source: /mods/game_pokedex/assets/evolucoes_header.png
+    image-border: 0
+    image-size: 99 17
+    phantom: true
+
+  PokedexSectionTitle
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 284
+    margin-left: 38
+    text: Evolucoes
+
+  UIWidget
+    id: evolutionsFrame
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 300
+    margin-left: 24
+    size: 174 59
+    image-source: /mods/game_pokedex/assets/evolucoes_panel.png
+    image-border: 0
+    image-size: 174 59
+    phantom: true
+
+  PokedexBodyText
+    id: evolutionsLabel
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 305
+    margin-left: 34
+    size: 150 36
+    background-color: #00000000
+    border-width: 0
+    padding: 4
+    text: 'Nenhuma'

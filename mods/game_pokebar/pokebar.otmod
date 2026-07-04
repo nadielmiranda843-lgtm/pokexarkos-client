@@ -1,0 +1,10 @@
+Module
+  name: game_pokebar
+  description: PokeBar List
+  author: Lueys
+  autoload: true
+  autoload-priority: 1000
+  sandboxed: true
+  scripts: [ pokebar ]
+  @onLoad: init()
+  @onUnload: terminate()

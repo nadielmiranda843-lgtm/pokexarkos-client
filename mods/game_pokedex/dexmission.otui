@@ -1,0 +1,456 @@
+DexMissionWindow < MainWindow
+  size: 960 610
+  padding: 10
+  margin: 0
+  focusable: true
+  draggable: true
+  !text: tr('')
+  background-color: #101a24ee
+  border-width: 1
+  border-color: #3db8d4
+  @onEscape: self:hide()
+
+DexMissionTitle < Label
+  color: #86efff
+  font: terminus-18px-bold
+
+DexMissionText < Label
+  color: #d7edf5
+  font: verdana-11px-monochrome
+
+DexMissionMutedText < Label
+  color: #93aeb8
+  font: verdana-11px-monochrome
+
+DexMissionValue < Label
+  color: #7cf08c
+  font: verdana-11px-monochrome
+
+DexMissionHighlightValue < Label
+  color: #ffd36b
+  font: terminus-14px-bold
+
+DexMissionButton < Button
+  height: 24
+  background-color: #123448
+  border-width: 1
+  border-color: #46d6f7
+  image-source: /images/ui/white
+  image-color: #123448
+  image-clip: 0 0 1 1
+  image-border: 0
+  color: #eafcff
+  font: verdana-11px-monochrome
+
+  $hover:
+    background-color: #19455e
+    image-color: #19455e
+
+  $pressed:
+    background-color: #0d2432
+    image-color: #0d2432
+
+DexMissionTabButton < Button
+  width: 104
+  height: 26
+  background-color: #00000000
+  border-width: 0
+  image-border: 0
+  image-clip: 0 0 104 26
+  image-color: white
+  color: #d9f6ff
+  font: verdana-11px-monochrome
+
+  $hover:
+    background-color: #00000000
+    image-color: #d0d0d0
+
+  $pressed:
+    background-color: #00000000
+    image-color: #d0d0d0
+
+DexMissionActionButton < Button
+  width: 90
+  height: 24
+  background-color: #123448
+  border-width: 1
+  border-color: #46d6f7
+  image-source: /images/ui/white
+  image-color: #123448
+  image-clip: 0 0 1 1
+  image-border: 0
+  color: #eafcff
+  font: verdana-11px-monochrome
+
+  $hover:
+    background-color: #19455e
+    image-color: #19455e
+
+  $pressed:
+    background-color: #0d2432
+    image-color: #0d2432
+
+DexMissionShopBuyButton < Button
+  width: 90
+  height: 24
+  image-source: /mods/game_pokedex/assets/shop_buy_button.png
+  image-color: white
+  image-clip: 0 0 90 24
+  image-border: 0
+  color: #eafcff
+  font: verdana-11px-monochrome
+
+  $hover:
+    image-source: /mods/game_pokedex/assets/shop_buy_button_hover.png
+    image-color: white
+
+  $pressed:
+    image-source: /mods/game_pokedex/assets/shop_buy_button_pressed.png
+    image-color: white
+
+DexMissionRowCard < Panel
+  height: 98
+  margin-bottom: 4
+  padding: 8
+  background-color: #132230dd
+  border-width: 1
+  border-color: #29495a
+
+  UIWidget
+    id: portraitFrame
+    anchors.left: parent.left
+    anchors.verticalCenter: parent.verticalCenter
+    size: 108 108
+    image-source: /mods/game_pokedex/assets/dex_card_frame_review.png
+    image-border: 0
+    image-size: 108 108
+    phantom: true
+
+  UICreature
+    id: portraitCreature
+    anchors.centerIn: portraitFrame
+    margin-top: 2
+    size: 72 72
+    old-scaling: true
+    phantom: true
+
+  DexMissionText
+    id: pokeName
+    anchors.top: parent.top
+    anchors.left: portraitFrame.right
+    margin-left: 16
+    margin-top: 2
+    width: 250
+    text: Pokemon
+
+  DexMissionMutedText
+    id: pokeInfo
+    anchors.top: pokeName.bottom
+    anchors.left: pokeName.left
+    margin-top: 5
+    width: 258
+    text: Tipo: -- | Level: -- | Tier: --
+
+  DexMissionValue
+    id: pokeStatus
+    anchors.top: pokeInfo.bottom
+    anchors.left: pokeName.left
+    margin-top: 8
+    width: 180
+    text: Descoberto
+
+  DexMissionMutedText
+    id: pokeDexNumber
+    anchors.top: parent.top
+    anchors.right: parent.right
+    width: 70
+    text-align: right
+    text: #000
+
+DexMissionRewardRow < Panel
+  height: 62
+  margin-bottom: 4
+  padding: 4
+  background-color: #152633dd
+  border-width: 1
+  border-color: #29495a
+
+  DexMissionText
+    id: rewardTitle
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-left: 8
+    width: 250
+    text: Recompensa
+
+  DexMissionMutedText
+    id: rewardProgress
+    anchors.top: rewardTitle.bottom
+    anchors.left: rewardTitle.left
+    margin-top: 4
+    width: 280
+    text: Progresso
+
+  DexMissionActionButton
+    id: rewardButton
+    anchors.right: parent.right
+    anchors.verticalCenter: parent.verticalCenter
+    width: 90
+    text: Resgatar
+
+DexMissionShopPanel < Panel
+  padding: 8
+  background-color: #1a2412ee
+  border-width: 1
+  border-color: #8fce6d
+
+  DexMissionHighlightValue
+    id: shopHeader
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 1
+    height: 22
+    text: Shop Dex
+
+  DexMissionMutedText
+    id: shopHint
+    anchors.top: shopHeader.bottom
+    anchors.left: shopHeader.left
+    margin-top: 2
+    width: 270
+    height: 14
+    text: Troque seus Pontos Dex por boxes.
+
+  ScrollablePanel
+    id: missionShopList
+    anchors.top: shopHint.bottom
+    anchors.left: parent.left
+    anchors.right: missionShopScrollBar.left
+    anchors.bottom: parent.bottom
+    margin-top: 10
+    margin-right: 6
+    background-color: #00000000
+    border-width: 0
+    vertical-scrollbar: missionShopScrollBar
+    layout:
+      type: verticalBox
+      spacing: 2
+
+  VerticalScrollBar
+    id: missionShopScrollBar
+    anchors.top: shopHint.bottom
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    margin-top: 10
+    width: 16
+    step: 14
+    pixels-scroll: true
+
+DexMissionShopRow < Panel
+  height: 62
+  margin-bottom: 4
+  padding: 4
+  background-color: #152633dd
+  border-width: 1
+  border-color: #29495a
+
+  UIWidget
+    id: shopPreviewFrame
+    anchors.left: parent.left
+    anchors.verticalCenter: parent.verticalCenter
+    margin-left: 2
+    size: 48 48
+    image-source: /mods/game_pokedex/assets/principal_reward_frame.png
+    image-border: 0
+    image-size: 48 48
+
+  ImageView
+    id: shopPreview
+    anchors.centerIn: shopPreviewFrame
+    size: 36 36
+    border-width: 0
+    image-size: 36 36
+    visible: false
+
+  DexMissionText
+    id: shopTitle
+    anchors.top: parent.top
+    anchors.left: shopPreviewFrame.right
+    margin-left: 10
+    width: 210
+    text: Item
+
+  DexMissionMutedText
+    id: shopDescription
+    anchors.top: shopTitle.bottom
+    anchors.left: shopTitle.left
+    margin-top: 4
+    width: 210
+    text: Descricao
+
+  DexMissionShopBuyButton
+    id: shopButton
+    anchors.right: parent.right
+    anchors.verticalCenter: parent.verticalCenter
+    width: 90
+    text: Comprar
+
+DexMissionWindow
+  id: dexMissionWindow
+  visible: false
+  text: ''
+
+  DexMissionTitle
+    id: missionTitle
+    anchors.top: parent.top
+    anchors.left: parent.left
+    text: Missao Dex
+
+  DexMissionMutedText
+    id: missionSubtitle
+    anchors.top: missionTitle.bottom
+    anchors.left: missionTitle.left
+    margin-top: 3
+    text: Complete a Dex por categorias, receba pontos e troque no shop.
+
+  DexMissionButton
+    id: missionCloseButton
+    anchors.top: parent.top
+    anchors.right: parent.right
+    width: 70
+    text: Fechar
+
+  Panel
+    id: missionSummaryPanel
+    anchors.top: missionSubtitle.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 10
+    height: 54
+    padding: 8
+    background-color: #0d1822cc
+    border-width: 1
+    border-color: #244356
+
+    DexMissionText
+      id: summaryTotal
+      anchors.top: parent.top
+      anchors.left: parent.left
+      text: Total descoberto: 0/0
+
+    DexMissionText
+      id: summaryProgress
+      anchors.top: summaryTotal.bottom
+      anchors.left: parent.left
+      margin-top: 4
+      text: Progresso geral: 0%
+
+    DexMissionValue
+      id: summaryPoints
+      anchors.top: parent.top
+      anchors.right: parent.right
+      text-align: right
+      text: Pontos Dex: 0
+
+    DexMissionMutedText
+      id: summaryCurrentCategory
+      anchors.top: summaryPoints.bottom
+      anchors.right: parent.right
+      margin-top: 4
+      width: 260
+      text-align: right
+      text: Categoria: --
+
+  Panel
+    id: missionTabBar
+    anchors.top: missionSummaryPanel.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 10
+    height: 56
+    layout:
+      type: verticalBox
+      fit-children: false
+      spacing: 4
+
+    Panel
+      id: missionTabRow1
+      width: 930
+      height: 26
+      layout:
+        type: horizontalBox
+        fit-children: false
+        spacing: 5
+
+    Panel
+      id: missionTabRow2
+      width: 930
+      height: 26
+      layout:
+        type: horizontalBox
+        fit-children: false
+        spacing: 5
+
+  Panel
+    id: missionLeftPanel
+    anchors.top: missionTabBar.bottom
+    anchors.left: parent.left
+    anchors.bottom: parent.bottom
+    anchors.right: parent.horizontalCenter
+    margin-top: 10
+    margin-right: 8
+    padding: 8
+    background-color: #0d1822cc
+    border-width: 1
+    border-color: #244356
+
+    DexMissionText
+      anchors.top: parent.top
+      anchors.left: parent.left
+      text: Pokemon da categoria
+
+    ScrollablePanel
+      id: missionPokemonList
+      anchors.top: parent.top
+      anchors.left: parent.left
+      anchors.right: missionPokemonScrollBar.left
+      anchors.bottom: parent.bottom
+      margin-top: 22
+      margin-right: 6
+      background-color: #00000000
+      border-width: 0
+      vertical-scrollbar: missionPokemonScrollBar
+      layout:
+        type: verticalBox
+        spacing: 2
+
+    VerticalScrollBar
+      id: missionPokemonScrollBar
+      anchors.top: parent.top
+      anchors.bottom: parent.bottom
+      anchors.right: parent.right
+      margin-top: 22
+      width: 16
+      step: 14
+      pixels-scroll: true
+
+  Panel
+    id: missionRightPanel
+    anchors.top: missionTabBar.bottom
+    anchors.left: parent.horizontalCenter
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    margin-top: 10
+    margin-left: 8
+    padding: 8
+    background-color: #0d1822cc
+    border-width: 1
+    border-color: #244356
+
+    DexMissionShopPanel
+      id: missionShopPanel
+      anchors.top: parent.top
+      anchors.left: parent.left
+      anchors.right: parent.right
+      anchors.bottom: parent.bottom
+      margin-right: 0

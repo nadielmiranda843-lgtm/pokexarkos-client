@@ -1,0 +1,28 @@
+TUTORIAL DE COMO COLOCAR OS ITENS NA LOJA
+
+Objetivo:
+Colocar uma imagem customizada para um item da loja aparecer alinhada no quadro da oferta.
+
+Pasta usada para as imagens:
+  data\images\ui\shop\custom_items
+
+Como adicionar um item:
+1) Descubra o ID do item que voce quer mostrar na loja (ex: 2160).
+2) Coloque a imagem do item na pasta acima com um destes nomes:
+   - 2160.png
+   - item_2160.png
+   - 2160.jpg
+   - item_2160.jpg
+   - 2160.jpeg
+   - item_2160.jpeg
+
+Regras importantes:
+- A imagem deve ser quadrada ou proporcional (recomendado 64x64 ou 96x96).
+- O cliente vai usar essa imagem automaticamente quando a oferta do item aparecer.
+- Se a oferta nao existir no servidor, a imagem nao cria a oferta sozinha.
+  (Para criar novas ofertas, voce precisa cadastrar no painel/servidor.)
+
+Exemplo rapido:
+- Item ID 1234
+- Salve: data\images\ui\shop\custom_items\item_1234.png
+- Abra a loja e a imagem customizada vai aparecer na oferta desse item.

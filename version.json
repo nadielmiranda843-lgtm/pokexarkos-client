@@ -1,0 +1,9 @@
+{
+  "version": "7.0.1",
+  "gl_url": "https://raw.githubusercontent.com/nadielmiranda843-lgtm/pokexarkos-client/main/pokexarkos_gl.exe",
+  "dx_url": "https://raw.githubusercontent.com/nadielmiranda843-lgtm/pokexarkos-client/main/pokexarkos_dx.exe",
+  "GlUrl": "https://raw.githubusercontent.com/nadielmiranda843-lgtm/pokexarkos-client/main/pokexarkos_gl.exe",
+  "DxUrl": "https://raw.githubusercontent.com/nadielmiranda843-lgtm/pokexarkos-client/main/pokexarkos_dx.exe",
+  "news": "Bem-vindo ao PokeXarkos!\n\nServidor online e funcionando.\nAproveite sua aventura!\n\n- Equipe PokeXarkos",
+  "changelog": "Versao 7.0.1 - Cliente preparado para autoupdate via GitHub"
+}

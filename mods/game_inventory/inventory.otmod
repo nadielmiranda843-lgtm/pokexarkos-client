@@ -1,0 +1,11 @@
+Module
+  name: game_inventory
+  description: Pokemon health bar, slots e PBs (painel lateral)
+  author: Lueys
+  website: none
+  autoload: true
+  autoload-priority: 1000
+  scripts: [ inventory ]
+  sandboxed: true
+  @onLoad: init()
+  @onUnload: terminate()

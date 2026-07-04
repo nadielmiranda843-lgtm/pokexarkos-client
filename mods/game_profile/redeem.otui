@@ -1,0 +1,90 @@
+Window
+  id: redeemWindow
+  text: Codigo de Resgate
+  size: 420 290
+  anchors.centerIn: parent
+  visible: false
+  focusable: true
+  draggable: true
+  background-color: #000000
+  border-width: 1
+  border-color: #2f6b96
+
+  Panel
+    anchors.fill: parent
+    background-color: #000000
+
+  Panel
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 42
+    background-color: #000000
+
+    Label
+      anchors.left: parent.left
+      anchors.verticalCenter: parent.verticalCenter
+      margin-left: 16
+      color: #f2fbff
+      font: sans-bold-16px
+      text: Codigo de Resgate
+
+    Button
+      id: closeButton
+      anchors.top: parent.top
+      anchors.right: parent.right
+      margin-top: 5
+      margin-right: 5
+      size: 32 32
+      text: X
+      background-color: #6c2f37
+      border-width: 1
+      border-color: #d98b95
+      color: #ffffff
+      font: sans-bold-16px
+
+  Label
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 64
+    margin-left: 16
+    color: #f2fbff
+    font: sans-bold-16px
+    text: Resgatar Codigo
+
+  Label
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 96
+    margin-left: 16
+    color: #d7ecff
+    font: verdana-11px-rounded
+    text-wrap: true
+    width: 388
+    text: Digite seu codigo abaixo. Cada codigo permite 1 resgate unico.
+
+  TextEdit
+    id: redeemCodeInput
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 140
+    margin-left: 16
+    margin-right: 16
+    height: 28
+
+  Button
+    id: redeemActionButton
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.top: parent.top
+    margin-top: 198
+    width: 170
+    height: 36
+    background-color: #0f4c81
+    image-color: #2f7fc8
+    border-width: 1
+    border-color: #6ec1ff
+    color: #f2fbff
+    font: verdana-11px-antialised
+    text: RESGATAR
+

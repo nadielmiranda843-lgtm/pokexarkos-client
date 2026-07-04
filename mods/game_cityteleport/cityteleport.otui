@@ -1,0 +1,288 @@
+TeleportWindow < UIWidget
+  size: 420 607
+  anchors.centerIn: parent
+  focusable: true
+  draggable: true
+  phantom: false
+  visible: false
+  background-color: #00000000
+  image-source: /mods/game_cityteleport/assets/background_clean.png
+  image-border: 0
+  @onEscape: modules.game_cityteleport.hide()
+
+TeleportCityButton < UIWidget
+  size: 146 36
+  background-color: #00000000
+  border-width: 0
+  focusable: true
+  phantom: false
+  opacity: 1.0
+  cursor: pointer
+
+  $hover:
+    opacity: 0.92
+
+  $pressed:
+    opacity: 0.82
+
+  UIWidget
+    id: cityButtonBackground
+    anchors.fill: parent
+    image-source: /mods/game_cityteleport/assets/city_button.png
+    image-border: 0
+    phantom: true
+
+  Label
+    id: cityButtonLabel
+    anchors.centerIn: parent
+    color: #f3e7cf
+    font: verdana-11px-antialised
+    text-auto-resize: true
+    phantom: true
+
+TeleportCloseButton < UIWidget
+  size: 36 36
+  background-color: #00000000
+  border-width: 0
+  focusable: true
+  phantom: false
+  opacity: 1.0
+  cursor: pointer
+  tooltip: Fechar
+
+  $hover:
+    opacity: 0.92
+
+  $pressed:
+    opacity: 0.82
+
+  ImageView
+    id: closeButtonIcon
+    anchors.fill: parent
+    image-source: /mods/game_cityteleport/assets/close_button_small.png
+    border-width: 0
+    phantom: true
+
+TeleportRegionButton < UIWidget
+  size: 126 26
+  background-color: #00000000
+  border-width: 0
+  focusable: true
+  phantom: false
+  opacity: 1.0
+  cursor: pointer
+
+  $hover:
+    opacity: 0.92
+
+  $pressed:
+    opacity: 0.82
+
+  ImageView
+    id: regionButtonBackground
+    anchors.fill: parent
+    image-source: /mods/game_cityteleport/assets/region_button.png
+    border-width: 0
+    phantom: true
+
+  Label
+    id: regionButtonLabel
+    anchors.centerIn: parent
+    color: #f3e7cf
+    font: verdana-11px-antialised
+    text-auto-resize: true
+    phantom: true
+
+TeleportMainButton < TeleportRegionButton
+  size: 102 22
+
+TeleportCategoryButton < TeleportRegionButton
+  size: 64 14
+
+TeleportWindow
+  id: teleportWindow
+
+  Label
+    id: titleLabel
+    !text: tr('')
+    anchors.top: parent.top
+    anchors.left: parent.left
+    width: 260
+    height: 24
+    margin-top: 31
+    margin-left: 92
+    color: #ffe79d
+    font: verdana-11px-antialised
+    text-auto-resize: true
+
+  TeleportCloseButton
+    id: closeButton
+    anchors.top: parent.top
+    anchors.right: parent.right
+    margin-top: 69
+    margin-right: 8
+    @onClick: modules.game_cityteleport.hide()
+
+  Label
+    id: pageDescriptionLabel
+    !text: tr('')
+    anchors.top: parent.top
+    anchors.left: parent.left
+    width: 260
+    height: 34
+    margin-top: 145
+    margin-left: 88
+    color: #ead9b0
+    font: verdana-11px-antialised
+    text-wrap: true
+    text-horizontal-auto-resize: true
+
+  Panel
+    id: cityBackdropPanel
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 142
+    margin-left: 48
+    size: 324 267
+    background-color: #120b05d8
+    border-width: 1
+    border-color: #c89a3f99
+
+  TeleportMainButton
+    id: categoryToggleButton
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 145
+    margin-left: 54
+
+  Panel
+    id: cityGridPanel
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 183
+    margin-left: 54
+    size: 352 248
+    background-color: #00000000
+
+    TeleportCityButton
+      id: cityButton1
+      anchors.top: parent.top
+      anchors.left: parent.left
+
+    TeleportCityButton
+      id: cityButton2
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-left: 166
+
+    TeleportCityButton
+      id: cityButton3
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 46
+
+    TeleportCityButton
+      id: cityButton4
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 46
+      margin-left: 166
+
+    TeleportCityButton
+      id: cityButton5
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 92
+
+    TeleportCityButton
+      id: cityButton6
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 92
+      margin-left: 166
+
+    TeleportCityButton
+      id: cityButton7
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 138
+
+    TeleportCityButton
+      id: cityButton8
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 138
+      margin-left: 166
+
+    TeleportCityButton
+      id: cityButton9
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 184
+
+    TeleportCityButton
+      id: cityButton10
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 184
+      margin-left: 166
+
+  Panel
+    id: categoryPanel
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 175
+    margin-left: 82
+    size: 74 84
+    background-color: #120b05f2
+    border-width: 1
+    border-color: #c89a3f99
+    visible: false
+
+    TeleportCategoryButton
+      id: pageKantoButton
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 3
+      margin-left: 5
+
+    TeleportCategoryButton
+      id: pageJohtoButton
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 18
+      margin-left: 5
+
+    TeleportCategoryButton
+      id: pageExtrasButton
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 33
+      margin-left: 5
+
+    TeleportCategoryButton
+      id: pageVipButton
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 48
+      margin-left: 5
+
+    TeleportCategoryButton
+      id: pageEventsButton
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 63
+      margin-left: 5
+
+  Label
+    id: requirementLabel
+    !text: tr('')
+    anchors.left: parent.left
+    anchors.bottom: parent.bottom
+    width: 300
+    height: 34
+    margin-left: 60
+    margin-bottom: 2
+    color: #ead9b0
+    font: verdana-11px-antialised
+    text-wrap: true

@@ -1,0 +1,17 @@
+*.log
+packet.log
+pokexarkos.log
+client_version.txt
+*.tmp
+Thumbs.db
+.DS_Store
+
+# Launcher/instalador ficam fora do repositorio do cliente.
+PokeXarkosLauncher.exe
+PokeXarkosLauncher_setup.exe
+Instal Lancher.exe
+installer_build_lancher/
+instal lancher/
+
+# Codigo-fonte antigo separado do pacote publicado.
+source_v6_clean/

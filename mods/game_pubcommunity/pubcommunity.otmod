@@ -1,0 +1,10 @@
+Module
+  name: game_pubcommunity
+  description: Central de Rank
+  author: Codex
+  sandboxed: true
+  autoload: true
+  otuis: [ pubcommunity ]
+  scripts: [ pubcommunity ]
+  @onLoad: init()
+  @onUnload: terminate()

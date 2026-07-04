@@ -1,0 +1,9 @@
+Module
+  name: game_profile
+  description: Separate player profile window
+  author: OpenAI
+  sandboxed: true
+  autoload: true
+  scripts: [ profile ]
+  @onLoad: init()
+  @onUnload: terminate()

@@ -1,0 +1,122 @@
+ValueLabel < Label
+  font: verdana-11px-rounded
+  color: #ffffff
+  text-auto-resize: false
+  text-align: left
+  text-wrap: false
+
+HealthBarText < Label
+  font: verdana-11px-rounded
+  color: #ffffff
+  text-auto-resize: false
+  text-align: center
+
+UIWindow
+  id: healthInfoWindow
+  image-source: img/healthinfo
+  size: 235 211
+  anchors.top: parent.top
+  anchors.left: parent.left
+  margin-top: 45
+  draggable: true
+  focusable: false
+
+  UICreature
+    id: avatarCreature
+    size: 62 62
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 38
+    margin-left: 22
+    phantom: true
+
+  Panel
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 34
+    margin-left: 65
+    size: 159 105
+    image-source: img/barra_nick
+    image-border: 12
+
+    ValueLabel
+      id: nickValue
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 39
+      margin-left: 18
+      width: 123
+      text-auto-resize: true
+      text: 'Nick: Player'
+
+  Panel
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 60
+    margin-left: 64
+    size: 159 105
+    image-source: img/barra_level
+    image-border: 12
+
+    ValueLabel
+      id: levelValue
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 39
+      margin-left: 24
+      width: 123
+      text-auto-resize: true
+      text: 'Level: 0'
+
+  ValueLabel
+    id: clanValue
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 112
+    margin-left: 88
+    width: 90
+    text: ''
+
+  ValueLabel
+    id: rankValue
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 128
+    margin-left: 88
+    width: 90
+    text: ''
+
+  Panel
+    id: teamCountImage
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 120
+    margin-left: 74
+    size: 70 10
+    image-source: img/pokeball0
+
+  Panel
+    id: lifeBarBg
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 132
+    margin-left: 41
+    size: 169 13
+    background-color: #05070bcc
+    border-width: 1
+    border-color: #d7dde8
+
+    Panel
+      id: lifeBarFill
+      anchors.left: parent.left
+      anchors.top: parent.top
+      margin-left: 1
+      margin-top: 1
+      height: 11
+      width: 167
+      background-color: #22b14c
+
+    HealthBarText
+      id: lifeBarText
+      anchors.fill: parent
+      text: '100%'

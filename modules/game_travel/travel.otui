@@ -1,0 +1,360 @@
+TravelWindow < MainWindow
+  size: 688 432
+  padding: 0
+  image-source: /images/ui/shop/pokexarkos_shop_alt
+  image-border: 0
+  background-color: #04101de8
+  border-width: 1
+  border-color: #3da7ff66
+
+TravelTabButton < Button
+  height: 28
+  font: sans-bold-16px
+  color: #ddecff
+  background-color: #071625ee
+  border-width: 1
+  border-color: #2d7dba88
+
+  $hover !on:
+    background-color: #0b2136ee
+    border-color: #56b8ffbb
+
+  $on:
+    color: #fff2cf
+    background-color: #113150f4
+    border-color: #6ec6ffdd
+
+TravelDestinationCard < Button
+  height: 58
+  margin-bottom: 4
+  padding: 8
+  text-offset: 0 0
+  background-color: #07131ff0
+  border-width: 1
+  border-color: #25597f99
+
+  $hover !on:
+    background-color: #0b1e2ef4
+    border-color: #53b8ffbb
+
+  $on:
+    background-color: #10304bf4
+    border-color: #7ed3ffdd
+
+  Label
+    id: title
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 6
+    margin-left: 10
+    margin-right: 10
+    font: sans-bold-16px
+    color: #fff0c5
+    text-auto-resize: true
+
+  Label
+    id: subtitle
+    anchors.left: title.left
+    anchors.right: title.right
+    anchors.top: title.bottom
+    margin-top: 3
+    font: verdana-11px-rounded
+    color: #b8d8f7
+    text-wrap: true
+    height: 18
+
+TravelActionButton < Button
+  height: 34
+  color: #fff5d1
+  font: sans-bold-16px
+  image-color: #fff1c6
+  background-color: #08111fcc
+  border-width: 1
+  border-color: #c9a15b88
+  padding-left: 18
+  padding-right: 18
+  text-offset: 0 1
+
+  $hover !disabled:
+    background-color: #10263df0
+    border-color: #f6d79b
+
+MainWindow
+  id: travelWindow
+  !text: tr('Teleport Travel')
+  size: 688 432
+  anchors.centerIn: parent
+  padding: 0
+  image-source: /images/ui/shop/pokexarkos_shop_alt
+  image-border: 0
+  background-color: #04101de8
+  border-width: 1
+  border-color: #3da7ff66
+  visible: false
+  @onEscape: modules.game_travel.hide()
+
+  Panel
+    anchors.fill: parent
+    margin: 12
+    background-color: #07121eea
+    border-width: 1
+    border-color: #2b6d99aa
+
+  Label
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 16
+    margin-left: 18
+    margin-right: 18
+    height: 26
+    text-align: center
+    font: sans-bold-16px
+    color: #fff1cb
+    !text: tr('Travel Nexus')
+
+  Label
+    anchors.top: prev.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 2
+    margin-left: 24
+    margin-right: 24
+    height: 18
+    text-align: center
+    font: verdana-11px-rounded
+    color: #bcd9f8
+    !text: tr('Escolha uma regiao, selecione o destino e confirme o teleporte.')
+
+  TextEdit
+    id: searchText
+    anchors.top: prev.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 14
+    margin-left: 22
+    margin-right: 22
+    height: 28
+    text: ''
+
+  HorizontalSeparator
+    anchors.top: prev.bottom
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 12
+    margin-left: 18
+    margin-right: 18
+
+  TravelTabButton
+    id: tabKanto
+    !text: tr('Kanto')
+    anchors.top: prev.bottom
+    anchors.left: parent.left
+    margin-top: 10
+    margin-left: 22
+    width: 98
+    @onClick: modules.game_travel.selectRegion('Kanto')
+
+  TravelTabButton
+    id: tabJohto
+    !text: tr('Johto')
+    anchors.top: prev.top
+    anchors.left: tabKanto.right
+    margin-left: 8
+    width: 98
+    @onClick: modules.game_travel.selectRegion('Johto')
+
+  TravelTabButton
+    id: tabHoenn
+    !text: tr('Hoenn')
+    anchors.top: prev.top
+    anchors.left: tabJohto.right
+    margin-left: 8
+    width: 98
+    @onClick: modules.game_travel.selectRegion('Hoenn')
+
+  TravelTabButton
+    id: tabSpecial
+    !text: tr('Special')
+    anchors.top: prev.top
+    anchors.left: tabHoenn.right
+    margin-left: 8
+    width: 98
+    @onClick: modules.game_travel.selectRegion('Special')
+
+  Panel
+    anchors.top: tabKanto.bottom
+    anchors.left: parent.left
+    anchors.bottom: confirmButton.top
+    width: 250
+    margin-top: 12
+    margin-left: 22
+    margin-bottom: 16
+    background-color: #08131ff0
+    border-width: 1
+    border-color: #2d7dba88
+
+    ScrollablePanel
+      id: destinationList
+      anchors.fill: parent
+      margin: 8
+      clipping: true
+      layout:
+        type: verticalBox
+        spacing: 3
+      vertical-scrollbar: destinationScroll
+
+    VerticalScrollBar
+      id: destinationScroll
+      anchors.top: parent.top
+      anchors.bottom: parent.bottom
+      anchors.right: parent.right
+      step: 40
+      pixels-scroll: true
+
+  Panel
+    id: detailsPanel
+    anchors.top: tabKanto.bottom
+    anchors.left: prev.right
+    anchors.right: parent.right
+    anchors.bottom: confirmButton.top
+    margin-top: 12
+    margin-left: 14
+    margin-right: 22
+    margin-bottom: 16
+    background-color: #08131ff0
+    border-width: 1
+    border-color: #2d7dba88
+
+    Label
+      id: detailsTitle
+      anchors.top: parent.top
+      anchors.left: parent.left
+      anchors.right: parent.right
+      margin-top: 18
+      margin-left: 18
+      margin-right: 18
+      height: 28
+      font: sans-bold-16px
+      color: #fff0c8
+      text-align: center
+      !text: tr('Selecione um destino')
+
+    Label
+      id: detailsRegion
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      anchors.right: parent.right
+      margin-top: 4
+      margin-left: 18
+      margin-right: 18
+      height: 18
+      font: verdana-11px-rounded
+      color: #8fcfff
+      text-align: center
+      !text: tr('Regiao')
+
+    Panel
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      anchors.right: parent.right
+      margin-top: 14
+      margin-left: 18
+      margin-right: 18
+      height: 84
+      background-color: #0b1b2bf0
+      border-width: 1
+      border-color: #3a87c4aa
+
+      Label
+        id: detailsDescription
+        anchors.fill: parent
+        margin: 10
+        text-wrap: true
+        font: verdana-11px-rounded
+        color: #deecff
+        text-align: center
+        !text: tr('Selecione uma rota para ver a descricao, o tipo de acesso e o comando que sera enviado.')
+
+    Label
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      margin-top: 16
+      margin-left: 18
+      font: sans-bold-16px
+      color: #fff0c8
+      !text: tr('Metodo:')
+
+    Label
+      id: detailsMethod
+      anchors.verticalCenter: prev.verticalCenter
+      anchors.left: prev.right
+      anchors.right: parent.right
+      margin-left: 10
+      margin-right: 18
+      font: verdana-11px-rounded
+      color: #9ed7ff
+      !text: tr('-')
+
+    Label
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      margin-top: 14
+      margin-left: 18
+      font: sans-bold-16px
+      color: #fff0c8
+      !text: tr('Comando:')
+
+    Label
+      id: detailsCommand
+      anchors.verticalCenter: prev.verticalCenter
+      anchors.left: prev.right
+      anchors.right: parent.right
+      margin-left: 10
+      margin-right: 18
+      font: verdana-11px-rounded
+      color: #9ed7ff
+      !text: tr('-')
+
+    Label
+      anchors.top: prev.bottom
+      anchors.left: parent.left
+      margin-top: 14
+      margin-left: 18
+      font: sans-bold-16px
+      color: #fff0c8
+      !text: tr('Observacao:')
+
+    Label
+      id: detailsNote
+      anchors.top: prev.top
+      anchors.left: prev.right
+      anchors.right: parent.right
+      margin-left: 10
+      margin-right: 18
+      text-wrap: true
+      height: 44
+      font: verdana-11px-rounded
+      color: #bfdcff
+      !text: tr('-')
+
+  TravelActionButton
+    id: closeButton
+    !text: tr('Fechar')
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    width: 120
+    margin-right: 22
+    margin-bottom: 18
+    @onClick: modules.game_travel.hide()
+
+  TravelActionButton
+    id: confirmButton
+    !text: tr('Teleportar')
+    anchors.right: closeButton.left
+    anchors.bottom: parent.bottom
+    width: 148
+    margin-right: 10
+    margin-bottom: 18
+    @onClick: modules.game_travel.confirmTravel()

@@ -1,0 +1,154 @@
+MainWindow
+  id: codeCreateRepeatWindow
+  !text: tr('Criar Código de Segurança')
+  size: 250 284
+  draggable: false
+  visible: false
+  @onEscape: creatingPassRepeatWindowHide()
+
+  Label
+    id: enterPasswordLabel
+    !text: tr('Repita o código de segurança')
+    anchors.top: parent.top
+    anchors.horizontalCenter: parent.horizontalCenter
+    margin-left: -12
+    margin-top: 25
+
+  UIButton
+    id: helptooltip
+    size: 16 16
+    image-source: /images/game/others_vitoredu/help.png
+    image-auto-resize: true
+    anchors.top: enterPasswordLabel.top
+    anchors.left: enterPasswordLabel.right
+    margin-left: 8
+    margin-top: -2
+    !tooltip: tr("Para confirmar a criação do seu código, digite o código de segurança\nque você inseriu na janela anterior.")
+
+  PasswordTextEdit
+    id: enterPasswordText
+    enabled: false
+    size: 5 20
+    anchors.top: enterPasswordLabel.top
+    anchors.right: parent.right
+    anchors.left: parent.left
+    margin-top: 18
+    $disabled:
+      color: green
+
+  Button
+    id: button1
+    text: 1
+    width: 54
+    anchors.top: enterPasswordText.top
+    anchors.left: enterPasswordText.left
+    margin-top: 27
+    margin-left: 24
+    @onClick: self:getParent():getChildById('enterPasswordText'):setText(self:getParent():getChildById('enterPasswordText'):getText() .. '1')
+  Button
+    id: button2
+    text: 2
+    width: 54
+    anchors.top: enterPasswordText.top
+    anchors.left: button1.right
+    margin-top: 27
+    margin-left: 4
+    @onClick: self:getParent():getChildById('enterPasswordText'):setText(self:getParent():getChildById('enterPasswordText'):getText() .. '2')
+  Button
+    id: button3
+    text: 3
+    width: 54
+    anchors.top: enterPasswordText.top
+    anchors.left: button2.right
+    margin-top: 27
+    margin-left: 4
+    @onClick: self:getParent():getChildById('enterPasswordText'):setText(self:getParent():getChildById('enterPasswordText'):getText() .. '3')
+  Button
+    id: button4
+    text: 4
+    width: 54
+    anchors.top: button1.bottom
+    anchors.left: button1.left
+    margin-top: 4
+    @onClick: self:getParent():getChildById('enterPasswordText'):setText(self:getParent():getChildById('enterPasswordText'):getText() .. '4')
+  Button
+    id: button5
+    text: 5
+    width: 54
+    anchors.top: button2.bottom
+    anchors.left: button4.right
+    margin-top: 4
+    margin-left: 4
+    @onClick: self:getParent():getChildById('enterPasswordText'):setText(self:getParent():getChildById('enterPasswordText'):getText() .. '5')
+  Button
+    id: button6
+    text: 6
+    width: 54
+    anchors.top: button3.bottom
+    anchors.left: button5.right
+    margin-top: 4
+    margin-left: 4
+    @onClick: self:getParent():getChildById('enterPasswordText'):setText(self:getParent():getChildById('enterPasswordText'):getText() .. '6')
+  Button
+    id: button7
+    text: 7
+    width: 54
+    anchors.top: button4.bottom
+    anchors.left: button4.left
+    margin-top: 4
+    @onClick: self:getParent():getChildById('enterPasswordText'):setText(self:getParent():getChildById('enterPasswordText'):getText() .. '7')
+  Button
+    id: button8
+    text: 8
+    width: 54
+    anchors.top: button5.bottom
+    anchors.left: button7.right
+    margin-top: 4
+    margin-left: 4
+    @onClick: self:getParent():getChildById('enterPasswordText'):setText(self:getParent():getChildById('enterPasswordText'):getText() .. '8')
+  Button
+    id: button9
+    text: 9
+    width: 54
+    anchors.top: button6.bottom
+    anchors.left: button8.right
+    margin-top: 4
+    margin-left: 4
+    @onClick: self:getParent():getChildById('enterPasswordText'):setText(self:getParent():getChildById('enterPasswordText'):getText() .. '9')
+  Button
+    id: button0
+    text: 0
+    width: 54
+    anchors.top: button7.bottom
+    anchors.left: button7.left
+    margin-top: 4
+    @onClick: self:getParent():getChildById('enterPasswordText'):setText(self:getParent():getChildById('enterPasswordText'):getText() .. '0')
+  Button
+    id: buttonReset
+    !text: tr('Clean')
+    width: 54
+    anchors.top: button8.bottom
+    anchors.left: button0.right
+    margin-top: 4
+    margin-left: 4
+    @onClick: self:getParent():getChildById('enterPasswordText'):setText('')
+  Button
+    id: buttonCancel
+    !text: tr('Close')
+    width: 54
+    anchors.top: button9.bottom
+    anchors.left: buttonReset.right
+    margin-top: 4
+    margin-left: 4
+    @onClick: self:getParent():setVisible(false) self:getParent():getChildById('enterPasswordText'):setText(''); clearJanela1()
+
+  Button
+    id: buttonOk
+    !text: tr('Confirm')
+    width: 90
+    height: 30
+    color: green
+    anchors.top: buttonCancel.bottom
+    anchors.horizontalCenter: parent.horizontalCenter
+    margin-top: 8
+    @onClick: sendPasswords()

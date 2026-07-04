@@ -1,0 +1,881 @@
+ShopWindow < UIWindow
+  background-color: #00000000
+  image-source: /mods/game_shop/assets/shop_background.png
+  image-border: 0
+  focusable: true
+  draggable: true
+  phantom: false
+
+ShopCategoryButton < ButtonBase
+  width: 132
+  height: 34
+  image-source: /mods/game_shop/assets/category_buttons/category_normal.png
+  image-border: 8
+  background-color: #00000000
+  color: #f2fbff
+  font: verdana-11px-antialised
+  text-align: center
+  text-offset: 12 0
+  padding-left: 28
+  padding-right: 4
+
+  $hover:
+    image-source: /mods/game_shop/assets/category_buttons/category_hover.png
+
+  $on:
+    image-source: /mods/game_shop/assets/category_buttons/category_selected.png
+    color: #ffffff
+
+  $pressed:
+    image-source: /mods/game_shop/assets/category_buttons/category_pressed.png
+
+ShopFilterButton < ButtonBase
+  width: 74
+  height: 26
+  image-source: /mods/game_shop/assets/filter_buttons/todos_normal.png
+  image-border: 5
+  background-color: #00000000
+  border-width: 0
+  color: #f2fbff
+  font: verdana-11px-antialised
+  text-align: center
+
+  $hover:
+    image-source: /mods/game_shop/assets/filter_buttons/todos_hover.png
+
+  $on:
+    image-source: /mods/game_shop/assets/filter_buttons/todos_selected.png
+
+  $pressed:
+    image-source: /mods/game_shop/assets/filter_buttons/todos_pressed.png
+
+ShopCommonFilterButton < ShopFilterButton
+  image-source: /mods/game_shop/assets/filter_buttons/comum_normal.png
+  $hover:
+    image-source: /mods/game_shop/assets/filter_buttons/comum_hover.png
+  $on:
+    image-source: /mods/game_shop/assets/filter_buttons/comum_selected.png
+  $pressed:
+    image-source: /mods/game_shop/assets/filter_buttons/comum_pressed.png
+
+ShopSpecialFilterButton < ShopFilterButton
+  image-source: /mods/game_shop/assets/filter_buttons/especial_normal.png
+  $hover:
+    image-source: /mods/game_shop/assets/filter_buttons/especial_hover.png
+  $on:
+    image-source: /mods/game_shop/assets/filter_buttons/especial_selected.png
+  $pressed:
+    image-source: /mods/game_shop/assets/filter_buttons/especial_pressed.png
+
+ShopLegendaryFilterButton < ShopFilterButton
+  image-source: /mods/game_shop/assets/filter_buttons/lendario_normal.png
+  $hover:
+    image-source: /mods/game_shop/assets/filter_buttons/lendario_hover.png
+  $on:
+    image-source: /mods/game_shop/assets/filter_buttons/lendario_selected.png
+  $pressed:
+    image-source: /mods/game_shop/assets/filter_buttons/lendario_pressed.png
+
+ShopMythicFilterButton < ShopLegendaryFilterButton
+
+ShopVipPremiumFilterButton < ButtonBase
+  width: 108
+  height: 26
+  image-source: /mods/game_shop/assets/vip_buttons/premium_normal.png
+  image-border: 8
+  background-color: #00000000
+  color: #eef4fb
+  font: verdana-11px-antialised
+  text-align: center
+
+  $hover:
+    image-source: /mods/game_shop/assets/vip_buttons/premium_hover.png
+
+  $on:
+    image-source: /mods/game_shop/assets/vip_buttons/premium_selected.png
+
+  $pressed:
+    image-source: /mods/game_shop/assets/vip_buttons/premium_pressed.png
+
+ShopVipPlusFilterButton < ButtonBase
+  width: 88
+  height: 26
+  image-source: /mods/game_shop/assets/vip_buttons/plus_normal.png
+  image-border: 8
+  background-color: #00000000
+  color: #effcff
+  font: verdana-11px-antialised
+  text-align: center
+
+  $hover:
+    image-source: /mods/game_shop/assets/vip_buttons/plus_hover.png
+
+  $on:
+    image-source: /mods/game_shop/assets/vip_buttons/plus_selected.png
+
+  $pressed:
+    image-source: /mods/game_shop/assets/vip_buttons/plus_pressed.png
+
+ShopBuyButton < ButtonBase
+  size: 82 28
+  image-source: /mods/game_shop/assets/buy_buttons/buy_normal.png
+  image-border: 8
+  background-color: #00000000
+  color: #f2fbff
+  font: verdana-11px-antialised
+  text-align: center
+  text-offset: 0 -1
+
+  $hover:
+    image-source: /mods/game_shop/assets/buy_buttons/buy_hover.png
+    color: #ffffff
+
+  $pressed:
+    image-source: /mods/game_shop/assets/buy_buttons/buy_pressed.png
+    color: #d8f5ff
+
+ShopMountRow < Panel
+  height: 52
+  image-source: /mods/game_shop/assets/product_row.png
+  image-border: 8
+  background-color: #00000000
+
+  Panel
+    id: mountPreviewHolder
+    size: 48 48
+    anchors.left: parent.left
+    anchors.verticalCenter: parent.verticalCenter
+    margin-left: 12
+    image-source: /mods/game_shop/assets/preview_frame.png
+    image-border: 4
+    background-color: #00000000
+
+    UICreature
+      id: mountPreview
+      size: 34 34
+      anchors.centerIn: parent
+      old-scaling: true
+      visible: false
+
+  Label
+    id: mountNameLabel
+    anchors.left: mountPreviewHolder.right
+    anchors.right: mountPriceLabel.left
+    anchors.verticalCenter: parent.verticalCenter
+    margin-left: 12
+    margin-right: 10
+    color: #f2fbff
+    font: verdana-11px-rounded
+    text-auto-resize: true
+
+  Label
+    id: mountPriceLabel
+    anchors.right: buyButton.left
+    anchors.verticalCenter: parent.verticalCenter
+    margin-right: 12
+    width: 92
+    text-align: center
+    color: #7fd6ff
+    font: sans-bold-16px
+
+  ShopBuyButton
+    id: buyButton
+    anchors.right: parent.right
+    anchors.verticalCenter: parent.verticalCenter
+    margin-right: 10
+    text: Comprar
+
+ShopOutfitRow < Panel
+  height: 52
+  image-source: /mods/game_shop/assets/product_row.png
+  image-border: 8
+  background-color: #00000000
+
+  Panel
+    id: outfitPreviewHolder
+    size: 48 48
+    anchors.left: parent.left
+    anchors.verticalCenter: parent.verticalCenter
+    margin-left: 12
+    image-source: /mods/game_shop/assets/preview_frame.png
+    image-border: 4
+    background-color: #00000000
+
+    UICreature
+      id: outfitPreview
+      size: 34 34
+      anchors.centerIn: parent
+      old-scaling: true
+      phantom: true
+
+  Label
+    id: outfitNameLabel
+    anchors.left: outfitPreviewHolder.right
+    anchors.right: outfitPriceLabel.left
+    anchors.verticalCenter: parent.verticalCenter
+    margin-left: 12
+    margin-right: 10
+    color: #f2fbff
+    font: verdana-11px-rounded
+    text-auto-resize: true
+
+  Label
+    id: outfitPriceLabel
+    anchors.right: buyButton.left
+    anchors.verticalCenter: parent.verticalCenter
+    margin-right: 12
+    width: 92
+    text-align: center
+    color: #7fd6ff
+    font: sans-bold-16px
+
+  ShopBuyButton
+    id: buyButton
+    anchors.right: parent.right
+    anchors.verticalCenter: parent.verticalCenter
+    margin-right: 10
+    text: Comprar
+
+ShopPokeboxRow < Panel
+  height: 52
+  image-source: /mods/game_shop/assets/product_row.png
+  image-border: 8
+  background-color: #00000000
+
+  Panel
+    id: pokeboxPreviewHolder
+    size: 48 48
+    anchors.left: parent.left
+    anchors.verticalCenter: parent.verticalCenter
+    margin-left: 12
+    image-source: /mods/game_shop/assets/preview_frame.png
+    image-border: 4
+    background-color: #00000000
+
+    UIWidget
+      id: pokeboxImagePreview
+      size: 32 32
+      anchors.centerIn: parent
+      phantom: true
+      visible: false
+
+  Label
+    id: pokeboxNameLabel
+    anchors.left: pokeboxPreviewHolder.right
+    anchors.right: pokeboxPriceLabel.left
+    anchors.verticalCenter: parent.verticalCenter
+    margin-left: 12
+    margin-right: 10
+    color: #f2fbff
+    font: verdana-11px-rounded
+    text-auto-resize: true
+
+  Label
+    id: pokeboxPriceLabel
+    anchors.right: buyButton.left
+    anchors.verticalCenter: parent.verticalCenter
+    margin-right: 12
+    width: 92
+    text-align: center
+    color: #7fd6ff
+    font: sans-bold-16px
+
+  ShopBuyButton
+    id: buyButton
+    anchors.right: parent.right
+    anchors.verticalCenter: parent.verticalCenter
+    margin-right: 10
+    text: Comprar
+
+ShopWindow
+  id: shopWindow
+  size: 720 455
+  anchors.centerIn: parent
+  visible: false
+
+  Panel
+    anchors.fill: parent
+    image-source: /mods/game_shop/assets/shop_background.png
+    image-border: 0
+    background-color: #00000000
+
+  Panel
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 52
+    image-source: /mods/game_shop/assets/shop_header.png
+    image-border: 0
+    background-color: #00000000
+
+    UIWidget
+      anchors.horizontalCenter: parent.horizontalCenter
+      anchors.verticalCenter: parent.verticalCenter
+      size: 260 48
+      image-source: /mods/game_shop/assets/logo_shop_arkos.png
+      phantom: true
+
+    Label
+      anchors.horizontalCenter: parent.horizontalCenter
+      anchors.verticalCenter: parent.verticalCenter
+      color: #7fd6ff
+      font: sans-bold-16px
+      text-align: center
+      visible: false
+      text: Shop Arkos
+
+    UIWidget
+      id: closeButton
+      anchors.top: parent.top
+      anchors.right: parent.right
+      margin-top: 7
+      margin-right: 6
+      size: 34 34
+      image-source: /mods/game_shop/assets/close_button_custom.png
+      image-clip: 0 0 34 34
+      image-border: 0
+      background-color: #00000000
+      phantom: false
+
+    Panel
+      anchors.left: parent.left
+      anchors.right: parent.right
+      anchors.bottom: parent.bottom
+      height: 1
+      background-color: #3d8bc5
+
+  Panel
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.bottom: parent.bottom
+    margin-top: 64
+    margin-left: 14
+    margin-bottom: 14
+    width: 150
+    image-source: /mods/game_shop/assets/shop_left_panel.png
+    image-border: 0
+    background-color: #00000000
+
+    Label
+      anchors.top: parent.top
+      anchors.horizontalCenter: parent.horizontalCenter
+      margin-top: 12
+      height: 24
+      color: #7fd6ff
+      font: sans-bold-16px
+      text-align: center
+      text: Categorias
+
+    ShopCategoryButton
+      id: roupaButton
+      anchors.top: parent.top
+      anchors.horizontalCenter: parent.horizontalCenter
+      margin-top: 44
+      text: Roupa
+      text-offset: 4 0
+      UIWidget
+        size: 24 24
+        anchors.left: parent.left
+        anchors.verticalCenter: parent.verticalCenter
+        margin-left: -8
+        image-source: /mods/game_shop/assets/icon_roupa_custom.png
+        image-size: 24 24
+        phantom: true
+
+    ShopCategoryButton
+      id: itemsButton
+      anchors.top: roupaButton.bottom
+      anchors.horizontalCenter: parent.horizontalCenter
+      margin-top: 10
+      text: Items
+      text-offset: 4 0
+      UIWidget
+        size: 24 24
+        anchors.left: parent.left
+        anchors.verticalCenter: parent.verticalCenter
+        margin-left: -8
+        image-source: /mods/game_shop/assets/icon_items_custom.png
+        image-size: 24 24
+        phantom: true
+
+    ShopCategoryButton
+      id: vipButton
+      anchors.top: itemsButton.bottom
+      anchors.horizontalCenter: parent.horizontalCenter
+      margin-top: 10
+      text: VIP
+      text-offset: 4 0
+      UIWidget
+        size: 24 24
+        anchors.left: parent.left
+        anchors.verticalCenter: parent.verticalCenter
+        margin-left: -8
+        image-source: /mods/game_shop/assets/icon_vip_custom.png
+        image-size: 24 24
+        phantom: true
+
+    ShopCategoryButton
+      id: pokeboxButton
+      anchors.top: vipButton.bottom
+      anchors.horizontalCenter: parent.horizontalCenter
+      margin-top: 10
+      text: PokeBox
+      UIWidget
+        size: 24 24
+        anchors.left: parent.left
+        anchors.verticalCenter: parent.verticalCenter
+        margin-left: -10
+        image-source: /mods/game_shop/assets/icon_pokebox_custom.png
+        image-size: 24 24
+        phantom: true
+
+    ShopCategoryButton
+      id: montariasButton
+      anchors.top: pokeboxButton.bottom
+      anchors.horizontalCenter: parent.horizontalCenter
+      margin-top: 10
+      text: Montarias
+      UIWidget
+        size: 24 24
+        anchors.left: parent.left
+        anchors.verticalCenter: parent.verticalCenter
+        margin-left: -10
+        image-source: /mods/game_shop/assets/icon_montarias_custom.png
+        image-size: 24 24
+        phantom: true
+
+    UIWidget
+      id: sideShopLogo
+      anchors.top: montariasButton.bottom
+      anchors.horizontalCenter: parent.horizontalCenter
+      margin-top: -4
+      size: 146 146
+      image-source: /mods/game_shop/assets/logo_shop_pokexarkos_transparent_146.png
+      image-border: 0
+      phantom: true
+
+  Panel
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    margin-top: 64
+    margin-left: 178
+    margin-right: 14
+    height: 58
+    image-source: /mods/game_shop/assets/shop_points_panel.png
+    image-border: 0
+    background-color: #00000000
+
+    Label
+      anchors.left: parent.left
+      anchors.verticalCenter: parent.verticalCenter
+      margin-left: 16
+      width: 118
+      color: #87aeca
+      font: verdana-11px-rounded
+      text: Ark Donate Points
+
+    UIWidget
+      id: pointsCounterImage
+      anchors.left: parent.left
+      anchors.verticalCenter: parent.verticalCenter
+      margin-left: 128
+      size: 190 36
+      image-source: /mods/game_shop/assets/points_counter_custom.png
+      phantom: true
+
+    Label
+      id: pointsValueLabel
+      anchors.left: pointsCounterImage.left
+      anchors.right: pointsCounterImage.right
+      anchors.verticalCenter: pointsCounterImage.verticalCenter
+      margin-left: 62
+      margin-right: 12
+      color: #f2fbff
+      font: sans-bold-16px
+      text-align: left
+      text-auto-resize: true
+      text: 0
+
+    Label
+      id: categoryTitleLabel
+      anchors.right: parent.right
+      anchors.verticalCenter: parent.verticalCenter
+      margin-right: 16
+      width: 160
+      text-align: right
+      text-auto-resize: true
+      color: #7fd6ff
+      font: sans-bold-16px
+      text: Montarias
+
+  Panel
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    margin-top: 134
+    margin-left: 178
+    margin-right: 14
+    margin-bottom: 14
+    image-source: /mods/game_shop/assets/shop_list_panel.png
+    image-border: 0
+    background-color: #00000000
+
+    VerticalScrollBar
+      id: mountListScrollBar
+      anchors.top: mountFilterPanel.bottom
+      anchors.bottom: parent.bottom
+      anchors.right: parent.right
+      margin-top: 10
+      margin-right: 10
+      margin-bottom: 12
+      step: 52
+      pixels-scroll: true
+
+    Panel
+      id: itemFilterPanel
+      anchors.left: parent.left
+      anchors.right: parent.right
+      anchors.top: parent.top
+      margin-top: 10
+      margin-left: 12
+      margin-right: 12
+      height: 30
+      visible: false
+
+      ShopFilterButton
+        id: itemItemFilterButton
+        anchors.left: parent.left
+        anchors.verticalCenter: parent.verticalCenter
+        text: Item
+
+      ShopSpecialFilterButton
+        id: pokeballItemFilterButton
+        width: 88
+        anchors.left: itemItemFilterButton.right
+        anchors.verticalCenter: parent.verticalCenter
+        margin-left: 6
+        text: Pokeball
+
+      ShopCommonFilterButton
+        id: bagsItemFilterButton
+        anchors.left: pokeballItemFilterButton.right
+        anchors.verticalCenter: parent.verticalCenter
+        margin-left: 6
+        text: Bags
+
+    VerticalScrollBar
+      id: itemListScrollBar
+      anchors.top: itemBagFilterPanel.bottom
+      anchors.bottom: parent.bottom
+      anchors.right: parent.right
+      margin-top: 10
+      margin-right: 10
+      margin-bottom: 12
+      step: 52
+      pixels-scroll: true
+      visible: false
+
+    Panel
+      id: itemBagFilterPanel
+      anchors.left: parent.left
+      anchors.right: parent.right
+      anchors.top: itemFilterPanel.bottom
+      margin-top: 8
+      margin-left: 12
+      margin-right: 12
+      height: 28
+      visible: false
+
+      ShopCommonFilterButton
+        id: commonBagFilterButton
+        width: 96
+        anchors.left: parent.left
+        anchors.verticalCenter: parent.verticalCenter
+        text: Bag Comum
+
+      ShopLegendaryFilterButton
+        id: legendaryBagFilterButton
+        width: 118
+        anchors.left: commonBagFilterButton.right
+        anchors.verticalCenter: parent.verticalCenter
+        margin-left: 6
+        text: Bag Lendarias
+
+    Panel
+      id: mountFilterPanel
+      anchors.left: parent.left
+      anchors.right: parent.right
+      anchors.top: parent.top
+      margin-top: 10
+      margin-left: 12
+      margin-right: 12
+      height: 30
+
+      ShopFilterButton
+        id: allMountFilterButton
+        anchors.left: parent.left
+        anchors.verticalCenter: parent.verticalCenter
+        text: Todos
+
+      ShopCommonFilterButton
+        id: commonMountFilterButton
+        anchors.left: allMountFilterButton.right
+        anchors.verticalCenter: parent.verticalCenter
+        margin-left: 6
+        text: Comum
+
+      ShopSpecialFilterButton
+        id: specialMountFilterButton
+        anchors.left: commonMountFilterButton.right
+        anchors.verticalCenter: parent.verticalCenter
+        margin-left: 6
+        text: Especial
+
+      ShopLegendaryFilterButton
+        id: legendaryMountFilterButton
+        anchors.left: specialMountFilterButton.right
+        anchors.verticalCenter: parent.verticalCenter
+        margin-left: 6
+        text: Lendario
+
+    Panel
+      id: outfitFilterPanel
+      anchors.left: parent.left
+      anchors.right: parent.right
+      anchors.top: parent.top
+      margin-top: 10
+      margin-left: 12
+      margin-right: 12
+      height: 30
+      visible: false
+
+      ShopCommonFilterButton
+        id: commonOutfitFilterButton
+        anchors.left: parent.left
+        anchors.verticalCenter: parent.verticalCenter
+        text: Comum
+
+      ShopVipPremiumFilterButton
+        id: premiumOutfitFilterButton
+        anchors.left: commonOutfitFilterButton.right
+        anchors.verticalCenter: parent.verticalCenter
+        margin-left: 6
+        text: Premium
+
+      ShopLegendaryFilterButton
+        id: legendaryOutfitFilterButton
+        anchors.left: premiumOutfitFilterButton.right
+        anchors.verticalCenter: parent.verticalCenter
+        margin-left: 6
+        text: Lendaria
+
+      ShopSpecialFilterButton
+        id: epicOutfitFilterButton
+        anchors.left: legendaryOutfitFilterButton.right
+        anchors.verticalCenter: parent.verticalCenter
+        margin-left: 6
+        text: Epic
+
+    VerticalScrollBar
+      id: outfitListScrollBar
+      anchors.top: outfitFilterPanel.bottom
+      anchors.bottom: parent.bottom
+      anchors.right: parent.right
+      margin-top: 10
+      margin-right: 10
+      margin-bottom: 12
+      step: 52
+      pixels-scroll: true
+      visible: false
+
+    VerticalScrollBar
+      id: vipListScrollBar
+      anchors.top: vipFilterPanel.bottom
+      anchors.bottom: parent.bottom
+      anchors.right: parent.right
+      margin-top: 10
+      margin-right: 10
+      margin-bottom: 12
+      step: 52
+      pixels-scroll: true
+      visible: false
+
+    Panel
+      id: vipFilterPanel
+      anchors.left: parent.left
+      anchors.right: parent.right
+      anchors.top: parent.top
+      margin-top: 10
+      margin-left: 12
+      margin-right: 12
+      height: 30
+      visible: false
+
+      ShopVipPremiumFilterButton
+        id: premiumVipFilterButton
+        anchors.left: parent.left
+        anchors.verticalCenter: parent.verticalCenter
+        text: Premium
+
+      ShopVipPlusFilterButton
+        id: plusVipFilterButton
+        anchors.left: premiumVipFilterButton.right
+        anchors.verticalCenter: parent.verticalCenter
+        margin-left: 6
+        text: Plus
+
+    Panel
+      id: pokeboxFilterPanel
+      anchors.left: parent.left
+      anchors.right: parent.right
+      anchors.top: parent.top
+      margin-top: 10
+      margin-left: 12
+      margin-right: 12
+      height: 30
+      visible: false
+
+      ShopFilterButton
+        id: allFilterButton
+        anchors.left: parent.left
+        anchors.verticalCenter: parent.verticalCenter
+        text: Todos
+
+      ShopFilterButton
+        id: arkFilterButton
+        anchors.left: allFilterButton.right
+        anchors.verticalCenter: parent.verticalCenter
+        margin-left: 6
+        text: Ark
+
+      ShopLegendaryFilterButton
+        id: lordFilterButton
+        anchors.left: arkFilterButton.right
+        anchors.verticalCenter: parent.verticalCenter
+        margin-left: 6
+        text: Lord
+
+      ShopSpecialFilterButton
+        id: demonFilterButton
+        anchors.left: lordFilterButton.right
+        anchors.verticalCenter: parent.verticalCenter
+        margin-left: 6
+        text: Demon
+
+      ShopFilterButton
+        id: angelFilterButton
+        anchors.left: demonFilterButton.right
+        anchors.verticalCenter: parent.verticalCenter
+        margin-left: 6
+        text: Angel
+
+      ShopCommonFilterButton
+        id: noneFilterButton
+        anchors.left: angelFilterButton.right
+        anchors.verticalCenter: parent.verticalCenter
+        margin-left: 6
+        text: Comum
+
+    VerticalScrollBar
+      id: pokeboxListScrollBar
+      anchors.top: pokeboxFilterPanel.bottom
+      anchors.bottom: parent.bottom
+      anchors.right: parent.right
+      margin-top: 10
+      margin-right: 10
+      margin-bottom: 12
+      step: 52
+      pixels-scroll: true
+      visible: false
+
+    ScrollablePanel
+      id: mountListPanel
+      anchors.left: parent.left
+      anchors.right: mountListScrollBar.left
+      anchors.top: mountFilterPanel.bottom
+      anchors.bottom: parent.bottom
+      margin-top: 10
+      margin-left: 12
+      margin-right: 12
+      margin-bottom: 12
+      vertical-scrollbar: mountListScrollBar
+      layout:
+        type: verticalBox
+        spacing: 8
+
+    ScrollablePanel
+      id: itemListPanel
+      anchors.left: parent.left
+      anchors.right: itemListScrollBar.left
+      anchors.top: itemBagFilterPanel.bottom
+      anchors.bottom: parent.bottom
+      margin-top: 10
+      margin-left: 12
+      margin-right: 12
+      margin-bottom: 12
+      vertical-scrollbar: itemListScrollBar
+      visible: false
+      layout:
+        type: verticalBox
+        spacing: 8
+
+    ScrollablePanel
+      id: outfitListPanel
+      anchors.left: parent.left
+      anchors.right: outfitListScrollBar.left
+      anchors.top: outfitFilterPanel.bottom
+      anchors.bottom: parent.bottom
+      margin-top: 10
+      margin-left: 12
+      margin-right: 12
+      margin-bottom: 12
+      vertical-scrollbar: outfitListScrollBar
+      visible: false
+      layout:
+        type: verticalBox
+        spacing: 8
+
+    ScrollablePanel
+      id: vipListPanel
+      anchors.left: parent.left
+      anchors.right: vipListScrollBar.left
+      anchors.top: vipFilterPanel.bottom
+      anchors.bottom: parent.bottom
+      margin-top: 10
+      margin-left: 12
+      margin-right: 12
+      margin-bottom: 12
+      vertical-scrollbar: vipListScrollBar
+      visible: false
+      layout:
+        type: verticalBox
+        spacing: 8
+
+    ScrollablePanel
+      id: pokeboxListPanel
+      anchors.left: parent.left
+      anchors.right: pokeboxListScrollBar.left
+      anchors.top: pokeboxFilterPanel.bottom
+      anchors.bottom: parent.bottom
+      margin-top: 10
+      margin-left: 12
+      margin-right: 12
+      margin-bottom: 12
+      vertical-scrollbar: pokeboxListScrollBar
+      visible: false
+      layout:
+        type: verticalBox
+        spacing: 8
+
+    Label
+      id: emptyStateLabel
+      anchors.centerIn: parent
+      width: 280
+      text-align: center
+      text-wrap: true
+      color: #d7ecff
+      font: verdana-11px-rounded
+      visible: false
+      text: Categoria em desenvolvimento. Em breve novos produtos aqui.

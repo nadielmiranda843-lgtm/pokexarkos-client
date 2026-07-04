@@ -1,0 +1,10 @@
+Module
+  name: game_shop
+  description: Shop Arkos
+  author: Codex
+  website: none
+  sandboxed: true
+  autoload: true
+  scripts: [ shop ]
+  @onLoad: init()
+  @onUnload: terminate()

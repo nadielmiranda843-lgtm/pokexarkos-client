@@ -1,0 +1,681 @@
+ProfileWindow < UIWindow
+  background-color: #000000
+  border-width: 1
+  border-color: #3d8bc5
+  focusable: true
+  draggable: true
+  phantom: false
+
+ProfileWindow
+  id: profileWindow
+  size: 690 598
+  anchors.centerIn: parent
+  visible: false
+
+  Panel
+    anchors.fill: parent
+    image-source: /images/ui/menu_perfil
+    image-border: 0
+
+  Panel
+    anchors.fill: parent
+    background-color: #000000
+
+  Panel
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: parent.right
+    height: 58
+    background-color: #000000
+
+
+    Label
+      id: nameLabel
+      anchors.left: parent.left
+      anchors.verticalCenter: parent.verticalCenter
+      margin-left: 156
+      width: 1
+      height: 1
+      visible: false
+      text: Name
+
+    UIWidget
+      size: 18 18
+      anchors.right: closeButton.left
+      anchors.verticalCenter: parent.verticalCenter
+      margin-right: 138
+      image-source: /images/game/others_vitoredu/lockpad
+
+    Panel
+      id: idValueBox
+      anchors.right: closeButton.left
+      anchors.verticalCenter: parent.verticalCenter
+      margin-right: 12
+      size: 120 28
+      background-color: #0a0a0a
+      border-width: 1
+      border-color: #2a5877
+
+      Label
+        id: value
+        anchors.fill: parent
+        margin-left: 6
+        margin-right: 6
+        text-align: center
+        color: #f2fbff
+        font: verdana-11px-antialised
+
+    Button
+      id: closeButton
+      anchors.top: parent.top
+      anchors.right: parent.right
+      margin-top: 12
+      margin-right: 12
+      size: 32 32
+      text: X
+      background-color: #6c2f37
+      border-width: 1
+      border-color: #d98b95
+      color: #ffffff
+      font: sans-bold-16px
+      @onClick: modules.game_profile.toggle()
+
+    Panel
+      anchors.left: parent.left
+      anchors.right: parent.right
+      anchors.bottom: parent.bottom
+      height: 1
+      background-color: #3d8bc5
+
+  Panel
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 76
+    margin-left: 18
+    size: 154 188
+    background-color: #000000
+    border-width: 1
+    border-color: #2f6b96
+
+    UIWidget
+      size: 72 72
+      anchors.top: parent.top
+      anchors.horizontalCenter: parent.horizontalCenter
+      margin-top: 10
+      image-source: /images/game/others_vitoredu/profileicon
+
+    UICreature
+      id: outfitBox
+      size: 112 112
+      anchors.top: parent.top
+      anchors.horizontalCenter: parent.horizontalCenter
+      margin-top: 18
+      old-scaling: true
+      phantom: true
+
+    Label
+      anchors.left: parent.left
+      anchors.right: parent.right
+      anchors.bottom: levelLabel.top
+      margin-left: 10
+      margin-right: 10
+      margin-bottom: 8
+      text-align: center
+      color: #7fa9c7
+      font: verdana-11px-rounded
+      text: Outfit atual
+
+    Label
+      id: levelLabel
+      anchors.left: parent.left
+      anchors.right: parent.right
+      anchors.bottom: parent.bottom
+      margin-left: 12
+      margin-right: 12
+      margin-bottom: 14
+      text-align: center
+      color: #b9ff8f
+      font: sans-bold-16px
+      text: Lv0
+
+  Panel
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 76
+    margin-left: 186
+    size: 486 188
+    background-color: #000000
+    border-width: 1
+    border-color: #2f6b96
+
+    UIWidget
+      size: 18 18
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 12
+      margin-left: 16
+      image-source: /images/game/others_vitoredu/tierstars
+
+    Label
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 14
+      margin-left: 42
+      color: #8fd6ff
+      font: terminus-14px-bold
+      text: Resumo do Jogador
+
+    Label
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 42
+      margin-left: 16
+      color: #87aeca
+      font: verdana-11px-rounded
+      text: Level
+
+    Panel
+      id: levelValueBox
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 36
+      margin-left: 86
+      size: 88 28
+      background-color: #0a0a0a
+      border-width: 1
+      border-color: #2a5877
+      Label
+        id: value
+        anchors.fill: parent
+        text-align: center
+        color: #f2fbff
+        font: verdana-11px-antialised
+
+    Label
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 42
+      margin-left: 192
+      color: #87aeca
+      font: verdana-11px-rounded
+      text: Profissao
+
+    Panel
+      id: vocationValueBox
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 36
+      margin-left: 270
+      size: 126 28
+      background-color: #0a0a0a
+      border-width: 1
+      border-color: #2a5877
+      Label
+        id: value
+        anchors.fill: parent
+        text-align: center
+        color: #f2fbff
+        font: verdana-11px-antialised
+
+    Label
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 86
+      margin-left: 16
+      color: #87aeca
+      font: verdana-11px-rounded
+      text: Resets
+
+    Panel
+      id: resetValueBox
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 80
+      margin-left: 86
+      size: 88 28
+      background-color: #0a0a0a
+      border-width: 1
+      border-color: #2a5877
+      Label
+        id: value
+        anchors.fill: parent
+        text-align: center
+        color: #f2fbff
+        font: verdana-11px-antialised
+
+    UIWidget
+      size: 18 18
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 84
+      margin-left: 192
+      image-source: /images/game/others_vitoredu/pokeball
+
+    Label
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 86
+      margin-left: 216
+      color: #87aeca
+      font: verdana-11px-rounded
+      text: Pokemon
+
+    Panel
+      id: pokemonValueBox
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 80
+      margin-left: 270
+      size: 126 28
+      background-color: #0a0a0a
+      border-width: 1
+      border-color: #2a5877
+      Label
+        id: value
+        anchors.fill: parent
+        text-align: center
+        color: #f2fbff
+        font: verdana-11px-antialised
+
+    Label
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 130
+      margin-left: 16
+      color: #87aeca
+      font: verdana-11px-rounded
+      text: Grupo
+
+    Panel
+      id: groupValueBox
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 124
+      margin-left: 86
+      size: 88 28
+      background-color: #0a0a0a
+      border-width: 1
+      border-color: #2a5877
+      Label
+        id: value
+        anchors.fill: parent
+        text-align: center
+        color: #f2fbff
+        font: verdana-11px-antialised
+
+    Label
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 130
+      margin-left: 192
+      color: #87aeca
+      font: verdana-11px-rounded
+      text: Conta
+
+    Panel
+      id: premiumValueBox
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 124
+      margin-left: 270
+      size: 126 28
+      background-color: #0a0a0a
+      border-width: 1
+      border-color: #2a5877
+      Label
+        id: value
+        anchors.fill: parent
+        text-align: center
+        color: #f2fbff
+        font: verdana-11px-antialised
+
+    Label
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 164
+      margin-left: 16
+      color: #87aeca
+      font: verdana-11px-rounded
+      text: Estados
+
+    Panel
+      id: stateSummaryValueBox
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 158
+      margin-left: 86
+      size: 160 28
+      background-color: #0a0a0a
+      border-width: 1
+      border-color: #2a5877
+      Label
+        id: value
+        anchors.fill: parent
+        text-align: center
+        color: #f2fbff
+        font: verdana-11px-antialised
+
+    Panel
+      id: panelCondition
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 160
+      margin-left: 254
+      size: 216 24
+      padding: 1
+      layout:
+        type: horizontalBox
+
+  Panel
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 278
+    margin-left: 18
+    size: 314 152
+    background-color: #000000
+    border-width: 1
+    border-color: #2f6b96
+
+    UIWidget
+      size: 18 18
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 12
+      margin-left: 16
+      image-source: /images/game/others_vitoredu/npcprice
+
+    Label
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 14
+      margin-left: 42
+      color: #8fd6ff
+      font: terminus-14px-bold
+      text: Economia
+
+    UIWidget
+      size: 18 18
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 46
+      margin-left: 16
+      image-source: /images/game/others_vitoredu/diamondicon
+
+    Label
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 48
+      margin-left: 40
+      color: #87aeca
+      font: verdana-11px-rounded
+      text: Ark Donate Points
+
+    Panel
+      id: diamondsValueBox
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 42
+      margin-left: 102
+      size: 186 28
+      background-color: #0a0a0a
+      border-width: 1
+      border-color: #2a5877
+      Label
+        id: value
+        anchors.fill: parent
+        margin-left: 8
+        margin-right: 8
+        text-align: left
+        color: #f2fbff
+        font: verdana-11px-antialised
+
+    UIWidget
+      size: 18 18
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 84
+      margin-left: 16
+      image-source: /images/topbuttons/shop
+
+    Label
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 86
+      margin-left: 40
+      color: #87aeca
+      font: verdana-11px-rounded
+      text: Banco
+
+    Panel
+      id: bankValueBox
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 80
+      margin-left: 102
+      size: 186 28
+      background-color: #0a0a0a
+      border-width: 1
+      border-color: #2a5877
+      Label
+        id: value
+        anchors.fill: parent
+        margin-left: 8
+        margin-right: 8
+        text-align: left
+        color: #f2fbff
+        font: verdana-11px-antialised
+
+    UIWidget
+      size: 18 18
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 118
+      margin-left: 16
+      image-source: /images/topbuttons/inventory
+
+    Label
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 120
+      margin-left: 40
+      color: #87aeca
+      font: verdana-11px-rounded
+      text: Mochila
+
+    Panel
+      id: capacityValueBox
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 114
+      margin-left: 102
+      size: 186 28
+      background-color: #0a0a0a
+      border-width: 1
+      border-color: #2a5877
+      Label
+        id: value
+        anchors.fill: parent
+        margin-left: 8
+        margin-right: 8
+        text-align: left
+        color: #f2fbff
+        font: verdana-11px-antialised
+
+  Panel
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 278
+    margin-left: 358
+    size: 314 152
+    background-color: #000000
+    border-width: 1
+    border-color: #2f6b96
+
+    UIWidget
+      size: 18 18
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 12
+      margin-left: 16
+      image-source: /images/game/others_vitoredu/lockpad
+
+    Label
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 14
+      margin-left: 42
+      color: #8fd6ff
+      font: terminus-14px-bold
+      text: Conta e Beneficios
+
+    UIWidget
+      size: 18 18
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 46
+      margin-left: 16
+      image-source: /images/game/others_vitoredu/help
+
+    Label
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 48
+      margin-left: 40
+      color: #87aeca
+      font: verdana-11px-rounded
+      text: Status
+
+    Panel
+      id: healthSummaryValueBox
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 42
+      margin-left: 102
+      size: 186 28
+      background-color: #0a0a0a
+      border-width: 1
+      border-color: #2a5877
+      Label
+        id: value
+        anchors.fill: parent
+        text-align: center
+        color: #f2fbff
+        font: verdana-11px-antialised
+
+    UIWidget
+      size: 18 18
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 84
+      margin-left: 16
+      image-source: /images/game/others_vitoredu/suport
+
+    Label
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 86
+      margin-left: 40
+      color: #87aeca
+      font: verdana-11px-rounded
+      text: Beneficios
+
+    Label
+      id: aboutAccountText
+      anchors.top: parent.top
+      anchors.left: parent.left
+      margin-top: 82
+      margin-left: 102
+      size: 192 42
+      color: #d7ecff
+      font: verdana-11px-rounded
+      text-wrap: true
+      text: 
+
+  Panel
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.bottom: parent.bottom
+    margin-bottom: 70
+    size: 250 34
+    background-color: #102536ee
+    border-width: 1
+    border-color: #2f6b96
+    phantom: true
+
+    Label
+      id: bottomPlayerName
+      anchors.fill: parent
+      margin-left: 8
+      margin-right: 8
+      color: #f2fbff
+      font: sans-bold-16px
+      text-align: center
+      text-auto-resize: true
+      text: Name
+
+  Panel
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    margin-left: 18
+    margin-right: 18
+    margin-bottom: 14
+    height: 52
+    background-color: #000000
+    border-width: 1
+    border-color: #2f6b96
+
+    Button
+      id: redeemButton
+      anchors.left: parent.left
+      anchors.verticalCenter: parent.verticalCenter
+      margin-left: 16
+      width: 190
+      height: 40
+      background-color: #0f4c81
+      image-color: #2f7fc8
+      border-width: 1
+      border-color: #6ec1ff
+      color: #f2fbff
+      font: verdana-11px-antialised
+      text: CODIGO DE RESGATE
+
+    Button
+      id: resetButton
+      anchors.horizontalCenter: parent.horizontalCenter
+      anchors.verticalCenter: parent.verticalCenter
+      width: 190
+      height: 40
+      background-color: #0f4c81
+      image-color: #2f7fc8
+      border-width: 1
+      border-color: #6ec1ff
+      color: #f2fbff
+      font: verdana-11px-antialised
+      text: RESETAR
+
+    Button
+      id: donateButton
+      anchors.right: parent.right
+      anchors.verticalCenter: parent.verticalCenter
+      margin-right: 16
+      width: 190
+      height: 40
+      background-color: #0f4c81
+      image-color: #2f7fc8
+      border-width: 1
+      border-color: #6ec1ff
+      color: #f2fbff
+      font: verdana-11px-antialised
+      text: DOAR
+
+
+
+
+
+
+
+
+
+
+
+

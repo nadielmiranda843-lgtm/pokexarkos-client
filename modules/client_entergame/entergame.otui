@@ -1,0 +1,218 @@
+InputEnterGame < PasswordTextEdit
+  anchors.left: prev.left
+  anchors.right: parent.right
+  anchors.top: prev.bottom
+  margin-top: 2
+  image-source: /images/ui/entergame/input
+  image-border: 10
+  text-align: left
+  height: 40
+  color: white
+  padding: 10
+
+StaticMainWindow
+  id: enterGame
+  size: 670 760
+  padding: 0
+  padding-right: 140
+  padding-left: 140
+  image-source: /images/ui/entergame/background
+  @onEnter: EnterGame.doLogin()
+
+  MenuLabel
+    !text: tr('Account name')
+    anchors.top: parent.top
+    anchors.left: parent.left
+    text-auto-resize: true
+    font: sans-bold-16px
+    margin-top: 320
+
+  InputEnterGame
+    id: accountNameTextEdit
+
+  MenuLabel
+    !text: tr('Password')
+    anchors.left: prev.left
+    anchors.top: prev.bottom
+    margin-top: 8
+    text-auto-resize: true
+    font: sans-bold-16px
+
+  InputEnterGame
+    id: accountPasswordTextEdit
+
+  Panel
+    id: serverSelectorPanel
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.top: prev.bottom
+    height: 52
+    on: true
+    focusable: false
+    
+    $on:
+      visible: true
+      margin-top: 0
+    
+    $!on:
+      visible: false
+      margin-top: -52
+      
+    HorizontalSeparator
+      anchors.left: parent.left
+      anchors.right: parent.right
+      anchors.top: parent.top
+      margin-top: 10
+      margin-left: 140
+      margin-right: 140
+
+    MenuLabel
+      id: serverLabel
+      !text: tr('Server')
+      anchors.left: parent.left
+      anchors.top: prev.bottom
+      text-auto-resize: true    
+      margin-top: 5
+
+    ComboBox
+      id: serverSelector
+      anchors.left: prev.left
+      anchors.right: parent.right
+      anchors.top: serverLabel.bottom
+      margin-top: 2
+      margin-right: 3
+      menu-scroll: true
+      menu-height: 125
+      menu-scroll-step: 25
+      text-offset: 5 2
+      @onOptionChange: EnterGame.onServerChange()
+    
+  Panel
+    id: customServerSelectorPanel
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.top: prev.bottom
+    height: 52
+    on: true
+    focusable: true
+    
+    $on:
+      visible: true
+      margin-top: 0
+    
+    $!on:
+      visible: false
+      margin-top: -52
+    
+    HorizontalSeparator
+      anchors.left: parent.left
+      anchors.right: parent.right
+      anchors.top: parent.top
+      margin-top: 8
+      margin-left: 140
+      margin-right: 140
+    MenuLabel
+      id: serverLabel
+      !text: tr('IP:PORT or URL')
+      anchors.left: prev.left
+      anchors.top: prev.bottom
+      margin-top: 8
+      text-auto-resize: true
+
+    TextEdit
+      id: serverHostTextEdit
+      !tooltip: tr('Make sure that your client uses\nthe correct game client version')
+      anchors.left: parent.left
+      anchors.top: serverLabel.bottom
+      margin-top: 2
+      width: 150
+
+    MenuLabel
+      id: clientLabel
+      !text: tr('Version')
+      anchors.left: serverHostTextEdit.right
+      anchors.top: serverLabel.top
+      text-auto-resize: true
+      margin-left: 10
+
+    ComboBox
+      id: clientVersionSelector
+      anchors.top: serverHostTextEdit.top
+      anchors.bottom: serverHostTextEdit.bottom
+      anchors.left: prev.left
+      anchors.right: parent.right
+      menu-scroll: true
+      menu-height: 125
+      menu-scroll-step: 25
+      margin-right: 3
+      
+  HorizontalSeparator
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.top: prev.bottom
+    margin-top: 10
+    margin-left: 140
+    margin-right: 140
+    visible: false
+
+  CheckBoxCustom
+    id: rememberPasswordBox
+    !text: tr('Remember password')
+    !tooltip: tr('Remember account and password when starts client')
+    text-auto-resize: true
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.top: prev.bottom
+    margin-top: 9
+    font: sans-bold-16px
+
+  HorizontalSeparator
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.top: prev.bottom
+    margin-top: 9
+    margin-left: 140
+    margin-right: 140
+    visible: false
+
+  ButtonBase
+    id: ButtonLogin
+    size: 250 55
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.bottom: parent.bottom
+    margin-bottom: 145
+    image-source: /images/ui/entergame/login
+    @onClick: EnterGame.doLogin()
+
+  UIWidget
+    id: textregister
+    !text: tr("Nao possui uma conta?")
+    anchors.top: ButtonLogin.bottom
+    anchors.left: ButtonLogin.left
+    margin-top: 20
+    margin-left: -15
+    color: gray
+    font: sans-bold-16px
+    text-auto-resize: true
+
+  UIWidget
+    !text: tr('Cadastre-se!')
+    anchors.top: textregister.top
+    anchors.left: textregister.right
+    margin-left: 5
+    cursor: pointer
+    color: #526bfa
+    font: sans-bold-16px
+    text-auto-resize: true
+    //@onClick: g_platform.openUrl("")
+    $hover:
+      color: #5A5A5A
+
+  Label
+    id: serverInfoLabel
+    font: verdana-11px-rounded
+    anchors.top: prev.top
+    anchors.left: parent.left
+    margin-top: 5
+    color: green
+    text-auto-resize: true
