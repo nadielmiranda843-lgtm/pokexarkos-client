@@ -26,3 +26,11 @@ Manifest de arquivos usado pelo launcher:
 ```text
 https://raw.githubusercontent.com/nadielmiranda843-lgtm/pokexarkos-client/main/files_manifest.txt
 ```
+
+No `files_manifest.txt`, cada linha usa:
+
+```text
+sha256|tipo|caminho
+```
+
+`tipo` pode ser `raw` para arquivos normais ou `lfs` para arquivos grandes baixados por `media.githubusercontent.com`.
