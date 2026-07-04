@@ -20,3 +20,9 @@ Pacote completo usado pelo launcher novo:
 ```text
 https://github.com/nadielmiranda843-lgtm/pokexarkos-client/archive/refs/heads/main.zip
 ```
+
+Manifest de arquivos usado pelo launcher:
+
+```text
+https://raw.githubusercontent.com/nadielmiranda843-lgtm/pokexarkos-client/main/files_manifest.txt
+```

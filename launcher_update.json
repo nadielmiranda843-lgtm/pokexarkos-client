@@ -1,5 +1,7 @@
 {
   "version": "7.0.1",
+  "raw_base_url": "https://raw.githubusercontent.com/nadielmiranda843-lgtm/pokexarkos-client/main/",
+  "files_manifest_url": "https://raw.githubusercontent.com/nadielmiranda843-lgtm/pokexarkos-client/main/files_manifest.txt",
   "zip_url": "https://github.com/nadielmiranda843-lgtm/pokexarkos-client/archive/refs/heads/main.zip",
   "client_version_file": "client_version.txt",
   "repository": "https://github.com/nadielmiranda843-lgtm/pokexarkos-client",
