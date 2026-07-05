@@ -1,0 +1,53 @@
+creatures: -- lados < > cima baixo
+  2335: -- Outfit Ectoplasm Halloween
+    opacity: 0.6
+
+  995: -- Gastly
+    opacity: 0.7
+
+  996: -- Haunter
+    opacity: 0.7
+
+  997: -- Gengar
+    opacity: 0.7
+  1337: -- Gengar Flying
+    opacity: 0.7
+
+  1251: -- Shiny Gastly
+    opacity: 0.7
+
+  1252: -- Shiny Haunter
+    opacity: 0.7
+
+  1253: -- Shiny Gengar
+    opacity: 0.7
+  1352: -- Gengar Flying
+    opacity: 0.7
+
+effects: -- lados < > cima baixo
+  3:
+    opacity: 0.7
+  507:
+    opacity: 0.7
+  475: -- aura amarela de boost +50
+    opacity: 0.65
+  744: -- efeito de evolucao e/ou quando aparece shiny
+    opacity: 0.65
+  56: -- efeito seta drop de stone
+    opacity: 0.65
+  54: -- efeito agua das magias
+    opacity: 0.7
+
+missiles: -- lados < > cima baixo
+  0:
+    opacity:0.7
+
+items:
+  31782:
+    opacity: 0.7
+  31783:
+    opacity: 0.7
+  31795:
+    opacity: 0.7
+  31796:
+    opacity: 0.7

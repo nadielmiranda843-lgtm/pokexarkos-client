@@ -1,2 +1,1 @@
-*
-!.gitignore
+# Arquivos de things precisam ser publicados para o launcher baixar o cliente completo.
