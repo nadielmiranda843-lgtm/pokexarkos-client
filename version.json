@@ -1,8 +1,10 @@
 {
-  "version": "7.0.7",
+  "version": "7.0.8",
   "raw_base_url": "https://raw.githubusercontent.com/nadielmiranda843-lgtm/pokexarkos-client/main/",
   "media_base_url": "https://media.githubusercontent.com/media/nadielmiranda843-lgtm/pokexarkos-client/main/",
   "files_manifest_url": "https://raw.githubusercontent.com/nadielmiranda843-lgtm/pokexarkos-client/main/files_manifest.txt",
+  "package_url": "https://media.githubusercontent.com/media/nadielmiranda843-lgtm/pokexarkos-client/main/client_package_7.0.8.zip",
+  "package_sha256": "e2ab6715cd70a4e5b98a41cea5c97edb209e84abc5c8f53ba78bc941ab5e7d72",
   "zip_url": "https://github.com/nadielmiranda843-lgtm/pokexarkos-client/archive/refs/heads/main.zip",
   "gl_url": "https://media.githubusercontent.com/media/nadielmiranda843-lgtm/pokexarkos-client/main/pokexarkos_gl.exe",
   "dx_url": "https://media.githubusercontent.com/media/nadielmiranda843-lgtm/pokexarkos-client/main/pokexarkos_dx.exe",
@@ -15,5 +17,5 @@
     "https://media.githubusercontent.com/media/nadielmiranda843-lgtm/pokexarkos-client/main/launcher_news/reportagem.png"
   ],
   "news": "O beta chegou!\n\n- Eventos semanais ativos\n- Eventos surpresa podem acontecer a qualquer momento\n- Donate em dobro no beta\n- Recompensas exclusivas e comunidade ativa\n\nEncontrou algo errado? Faca uma reportagem e ajude a deixar o servidor ainda melhor.",
-  "changelog": "Versao 7.0.7 - Cliente funcional completo sincronizado e atualizacao automatica validada"
+  "changelog": "Versao 7.0.8 - Download completo em pacote unico com verificacao de integridade"
 }
