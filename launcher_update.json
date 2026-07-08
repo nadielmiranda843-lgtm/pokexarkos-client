@@ -1,5 +1,5 @@
 {
-  "version": "7.0.2",
+  "version": "7.0.7",
   "raw_base_url": "https://raw.githubusercontent.com/nadielmiranda843-lgtm/pokexarkos-client/main/",
   "media_base_url": "https://media.githubusercontent.com/media/nadielmiranda843-lgtm/pokexarkos-client/main/",
   "files_manifest_url": "https://raw.githubusercontent.com/nadielmiranda843-lgtm/pokexarkos-client/main/files_manifest.txt",
@@ -18,5 +18,5 @@
     "https://media.githubusercontent.com/media/nadielmiranda843-lgtm/pokexarkos-client/main/launcher_news/reportagem.png"
   ],
   "news": "O beta chegou!\n\n- Eventos semanais ativos\n- Eventos surpresa podem acontecer a qualquer momento\n- Donate em dobro no beta\n- Recompensas exclusivas e comunidade ativa\n\nEncontrou algo errado? Faca uma reportagem e ajude a deixar o servidor ainda melhor.",
-  "changelog": "Versao 7.0.2 - URLs de download corrigidas para arquivos grandes no GitHub e noticias do beta atualizadas"
+  "changelog": "Versao 7.0.7 - Cliente funcional completo sincronizado e atualizacao automatica validada"
 }
