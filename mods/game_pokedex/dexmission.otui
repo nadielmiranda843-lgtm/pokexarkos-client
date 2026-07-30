@@ -12,7 +12,7 @@ DexMissionWindow < MainWindow
 
 DexMissionTitle < Label
   color: #86efff
-  font: terminus-18px-bold
+  font: terminus-14px-bold
 
 DexMissionText < Label
   color: #d7edf5

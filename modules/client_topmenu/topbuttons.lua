@@ -86,6 +86,7 @@ TopButtons = {
 
   {
     id = 'pubCommunityButton',
+    disabled = true, -- Central de Rank pausada temporariamente; remova esta linha para reativar o botao.
     tooltip = 'Central de Rank',
     icon = '/layouts/retro/images/topbuttons/pubcommunity',
     callback = function()

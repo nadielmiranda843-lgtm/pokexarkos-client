@@ -1,4 +1,5 @@
 local OPCODE_PUB_COMMUNITY = 112
+local CENTRAL_RANK_ENABLED = false -- Reative quando a Central de Rank estiver pronta.
 
 local pubWindow
 local tabelaProssomissaoWindow
@@ -457,6 +458,10 @@ local function onPubCommunityOpcode(protocol, opcode, buffer)
     return
   end
 
+  if not CENTRAL_RANK_ENABLED then
+    return
+  end
+
   currentState = data
   updateSummary()
   updateMessage(data.message or '')
@@ -483,6 +488,7 @@ local function onPubCommunityOpcode(protocol, opcode, buffer)
 end
 
 function toggle()
+  if not CENTRAL_RANK_ENABLED then return end
   if not pubWindow then return end
 
   if pubWindow:isVisible() then
@@ -508,34 +514,10 @@ function init()
     ProtocolGame.registerExtendedOpcode(OPCODE_PUB_COMMUNITY, onPubCommunityOpcode)
   end
 
-  pubWindow = g_ui.displayUI('pubcommunity.otui')
-  if not pubWindow then
-    print('[game_pubcommunity] pubcommunity.otui could not be loaded; module disabled.')
-    return
-  end
-  pubWindow:hide()
-
   buildTabelaProssomissaoUI()
 
-  messageLabel = pubWindow:recursiveGetChildById('messageLabel')
-  summaryLabel = pubWindow:recursiveGetChildById('summaryLabel')
-  listPanel = pubWindow:recursiveGetChildById('listPanel')
-
-  local closeButton = pubWindow:recursiveGetChildById('closeButton')
-  local refreshButton = pubWindow:recursiveGetChildById('refreshButton')
-  local rankTabButton = pubWindow:recursiveGetChildById('rankTabButton')
-  local shopTabButton = pubWindow:recursiveGetChildById('shopTabButton')
-  local tutorialTabButton = pubWindow:recursiveGetChildById('tutorialTabButton')
-
-  if not (messageLabel and summaryLabel and listPanel and closeButton and refreshButton and rankTabButton and shopTabButton and tutorialTabButton) then
-    print('[game_pubcommunity] required widgets were not found; module disabled.')
-    pubWindow:destroy()
-    pubWindow = nil
-    return
-  end
-
   if tabelaProssomissaoWindow and not (tabelaProssomissaoTitleLabel and tabelaProssomissaoTextLabel and tabelaProssomissaoAbandonButton and tabelaProssomissaoCloseButton and tabelaProssomissaoIcon) then
-    print('[game_pubcommunity] tabelaProssomissao widgets were not found; module disabled.')
+    print('[game_pubcommunity] tabelaProssomissao widgets were not found; mission tracker disabled.')
     tabelaProssomissaoWindow:destroy()
     tabelaProssomissaoWindow = nil
     tabelaProssomissaoTitleLabel = nil
@@ -546,27 +528,6 @@ function init()
       tabelaProssomissaoIcon:destroy()
       tabelaProssomissaoIcon = nil
     end
-  end
-
-  closeButton.onClick = function() pubWindow:hide() end
-  refreshButton.onClick = function()
-    if currentTab == 'tutorial' then
-      renderTutorial()
-      return
-    end
-
-    sendAction({ action = 'request_state', tab = currentTab })
-  end
-  rankTabButton.onClick = function()
-    updateMessage('Ranking global dos jogadores do servidor.')
-    renderTab('rankings')
-  end
-  shopTabButton.onClick = function()
-    updateMessage('Loja de recompensas e itens do sistema de rank.')
-    renderTab('shop')
-  end
-  tutorialTabButton.onClick = function()
-    renderTab('tutorial')
   end
 
   if tabelaProssomissaoAbandonButton then
@@ -597,6 +558,55 @@ function init()
 
   if cycleEvent then
     tabelaProssomissaoRefreshEvent = cycleEvent(refreshTabelaProssomissaoProgress, 2000)
+  end
+
+  if not CENTRAL_RANK_ENABLED then
+    return
+  end
+
+  pubWindow = g_ui.displayUI('pubcommunity.otui')
+  if not pubWindow then
+    print('[game_pubcommunity] pubcommunity.otui could not be loaded; module disabled.')
+    return
+  end
+  pubWindow:hide()
+
+  messageLabel = pubWindow:recursiveGetChildById('messageLabel')
+  summaryLabel = pubWindow:recursiveGetChildById('summaryLabel')
+  listPanel = pubWindow:recursiveGetChildById('listPanel')
+
+  local closeButton = pubWindow:recursiveGetChildById('closeButton')
+  local refreshButton = pubWindow:recursiveGetChildById('refreshButton')
+  local rankTabButton = pubWindow:recursiveGetChildById('rankTabButton')
+  local shopTabButton = pubWindow:recursiveGetChildById('shopTabButton')
+  local tutorialTabButton = pubWindow:recursiveGetChildById('tutorialTabButton')
+
+  if not (messageLabel and summaryLabel and listPanel and closeButton and refreshButton and rankTabButton and shopTabButton and tutorialTabButton) then
+    print('[game_pubcommunity] required widgets were not found; module disabled.')
+    pubWindow:destroy()
+    pubWindow = nil
+    return
+  end
+
+  closeButton.onClick = function() pubWindow:hide() end
+  refreshButton.onClick = function()
+    if currentTab == 'tutorial' then
+      renderTutorial()
+      return
+    end
+
+    sendAction({ action = 'request_state', tab = currentTab })
+  end
+  rankTabButton.onClick = function()
+    updateMessage('Ranking global dos jogadores do servidor.')
+    renderTab('rankings')
+  end
+  shopTabButton.onClick = function()
+    updateMessage('Loja de recompensas e itens do sistema de rank.')
+    renderTab('shop')
+  end
+  tutorialTabButton.onClick = function()
+    renderTab('tutorial')
   end
 
 end

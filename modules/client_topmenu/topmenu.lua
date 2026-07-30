@@ -65,12 +65,14 @@ function init()
   fpsLabel = topMenu:getChildById('fpsLabel')
 
   for _, btn in ipairs(TopButtons) do
-    addLeftGameButton(
-      btn.id,
-      btn.tooltip,
-      btn.icon,
-      btn.callback
-    )
+    if not btn.disabled then
+      addLeftGameButton(
+        btn.id,
+        btn.tooltip,
+        btn.icon,
+        btn.callback
+      )
+    end
   end
 
   if g_game.isOnline() then

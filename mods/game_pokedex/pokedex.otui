@@ -11,11 +11,11 @@ PokedexWindow < UIWidget
 
 PokedexTitleText < Label
   color: #7ce6ff
-  font: terminus-18px-bold
+  font: terminus-14px-bold
 
 PokedexWindowTitle < Label
   color: #f6fbff
-  font: terminus-18px-bold
+  font: terminus-14px-bold
 
 PokedexHeaderText < Label
   color: #e5e1d9
