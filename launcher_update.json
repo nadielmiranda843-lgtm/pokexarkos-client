@@ -1,24 +1,24 @@
 {
-  "version": "7.0.8",
-  "raw_base_url": "https://raw.githubusercontent.com/nadielmiranda843-lgtm/pokexarkos-client/main/",
-  "media_base_url": "https://media.githubusercontent.com/media/nadielmiranda843-lgtm/pokexarkos-client/main/",
-  "files_manifest_url": "https://raw.githubusercontent.com/nadielmiranda843-lgtm/pokexarkos-client/main/files_manifest.txt",
-  "package_url": "https://media.githubusercontent.com/media/nadielmiranda843-lgtm/pokexarkos-client/main/client_package_7.0.8.zip",
-  "package_sha256": "b6ae56d269613d8750537ffc213d7e5364d93984d1f312f02a503c0fb038cb2c",
-  "zip_url": "https://github.com/nadielmiranda843-lgtm/pokexarkos-client/archive/refs/heads/main.zip",
-  "client_version_file": "client_version.txt",
-  "repository": "https://github.com/nadielmiranda843-lgtm/pokexarkos-client",
-  "manifest_url": "https://raw.githubusercontent.com/nadielmiranda843-lgtm/pokexarkos-client/main/version.json",
-  "gl_url": "https://media.githubusercontent.com/media/nadielmiranda843-lgtm/pokexarkos-client/main/pokexarkos_gl.exe",
-  "dx_url": "https://media.githubusercontent.com/media/nadielmiranda843-lgtm/pokexarkos-client/main/pokexarkos_dx.exe",
-  "GlUrl": "https://media.githubusercontent.com/media/nadielmiranda843-lgtm/pokexarkos-client/main/pokexarkos_gl.exe",
-  "DxUrl": "https://media.githubusercontent.com/media/nadielmiranda843-lgtm/pokexarkos-client/main/pokexarkos_dx.exe",
-  "news_image_url": "https://media.githubusercontent.com/media/nadielmiranda843-lgtm/pokexarkos-client/main/launcher_news/beta-chegou.png",
-  "news_images": [
-    "https://media.githubusercontent.com/media/nadielmiranda843-lgtm/pokexarkos-client/main/launcher_news/eventos-donate.png",
-    "https://media.githubusercontent.com/media/nadielmiranda843-lgtm/pokexarkos-client/main/launcher_news/beta-chegou.png",
-    "https://media.githubusercontent.com/media/nadielmiranda843-lgtm/pokexarkos-client/main/launcher_news/reportagem.png"
-  ],
-  "news": "O beta chegou!\n\n- Eventos semanais ativos\n- Eventos surpresa podem acontecer a qualquer momento\n- Donate em dobro no beta\n- Recompensas exclusivas e comunidade ativa\n\nEncontrou algo errado? Faca uma reportagem e ajude a deixar o servidor ainda melhor.",
-  "changelog": "Versao 7.0.8 - Download completo em pacote unico com verificacao de integridade"
+    "version":  "7.0.9",
+    "raw_base_url":  "https://raw.githubusercontent.com/nadielmiranda843-lgtm/pokexarkos-client/main/",
+    "media_base_url":  "https://media.githubusercontent.com/media/nadielmiranda843-lgtm/pokexarkos-client/main/",
+    "files_manifest_url":  "https://raw.githubusercontent.com/nadielmiranda843-lgtm/pokexarkos-client/main/files_manifest.txt",
+    "package_url":  "https://media.githubusercontent.com/media/nadielmiranda843-lgtm/pokexarkos-client/main/client_package_7.0.9.zip",
+    "package_sha256":  "f3ad06fc1c526032bde3bf1727e5d0801e0aaae531e74a2920165f883256d255",
+    "zip_url":  "https://github.com/nadielmiranda843-lgtm/pokexarkos-client/archive/refs/heads/main.zip",
+    "client_version_file":  "client_version.txt",
+    "repository":  "https://github.com/nadielmiranda843-lgtm/pokexarkos-client",
+    "manifest_url":  "https://raw.githubusercontent.com/nadielmiranda843-lgtm/pokexarkos-client/main/version.json",
+    "gl_url":  "https://media.githubusercontent.com/media/nadielmiranda843-lgtm/pokexarkos-client/main/pokexarkos_gl.exe",
+    "dx_url":  "https://media.githubusercontent.com/media/nadielmiranda843-lgtm/pokexarkos-client/main/pokexarkos_dx.exe",
+    "GlUrl":  "https://media.githubusercontent.com/media/nadielmiranda843-lgtm/pokexarkos-client/main/pokexarkos_gl.exe",
+    "DxUrl":  "https://media.githubusercontent.com/media/nadielmiranda843-lgtm/pokexarkos-client/main/pokexarkos_dx.exe",
+    "news_image_url":  "https://media.githubusercontent.com/media/nadielmiranda843-lgtm/pokexarkos-client/main/launcher_news/beta-chegou.png",
+    "news_images":  [
+                        "https://media.githubusercontent.com/media/nadielmiranda843-lgtm/pokexarkos-client/main/launcher_news/eventos-donate.png",
+                        "https://media.githubusercontent.com/media/nadielmiranda843-lgtm/pokexarkos-client/main/launcher_news/beta-chegou.png",
+                        "https://media.githubusercontent.com/media/nadielmiranda843-lgtm/pokexarkos-client/main/launcher_news/reportagem.png"
+                    ],
+    "news":  "O beta chegou!\n\n- Eventos semanais ativos\n- Eventos surpresa podem acontecer a qualquer momento\n- Donate em dobro no beta\n- Recompensas exclusivas e comunidade ativa\n\nEncontrou algo errado? Faca uma reportagem e ajude a deixar o servidor ainda melhor.",
+    "changelog":  "Versao 7.0.9 - Cliente atualizado com novos arquivos 1098, correcoes da Pokedex e Central de Rank pausada temporariamente"
 }
